@@ -72,3 +72,21 @@ function dataGet(urlJob) {
     }
     ourData.send();
 }
+
+
+/**
+ * function requestJobData(url){
+ 	var ourData =  new XMLHttpRequest();
+  	ourData.open('GET',url,true);
+  	const response = '';
+  	ourData.onreadystatechange = function(){
+    	if(ourData.status == 200 && ourData.readyState == 4){
+          	response = ourData.responseText;
+          	out.pic = true;
+          msg('si')
+        }else{msg('status :'+ourData.status + ' readyState:'+ourData.readyState)}
+    };
+  	ourData.send();
+  	return response;
+}
+ */
