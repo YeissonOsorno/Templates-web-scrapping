@@ -20,7 +20,7 @@
     }else{
         out['pass_it'] = pass_it;
     }
-    msg(document.querySelector(out['pass_it']['selector_job']).length);
+    msg(document.querySelectorAll(out['pass_it']['selector_job']).length);
     var elemento = out['pass_it']['selector_job'];
     var elem = document.querySelectorAll(elemento)[out['pass_it']['cont']];
     if(elem){
