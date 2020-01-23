@@ -34,9 +34,7 @@
             }*/
  
         /////////// Respuesta en HTML de la descripcion de cada job //////////////
-        /*var full_html = getDescription(job.url); 
-        var div = document.createElement("div"); 
-        div.innerHTML = full_html;
+  
  
             for(const a of div.querySelectorAll('')){
                     const text = a.textContent.trim();
@@ -48,7 +46,7 @@
                 }
                 if(!job.location){
                     job.location = 'COMPANY LOCATION';
-                }*/
+                }
         job.temp = '0000-0000-0-bs'//Cualquier duda consultar este código con brahian-stiben.
         jobs.push(job);
     }
