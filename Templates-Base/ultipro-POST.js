@@ -1,7 +1,7 @@
 /*
 * Ultipro type POST without Pagination
 */
-/*Infinite Paginatio for wait selector of expected jobs*/
+/*Infinite Pagination for wait selector of expected jobs*/
 (function() {
 	var out = {};
   var selector = 'span[data-automation="opportunities-count"]';
@@ -10,37 +10,38 @@
 })();
 /*Expected jobs*/
 (function() {
-	var out = {};
+  var out = {};
     var selector = 'span[data-automation="opportunities-count"]';
-  	var regex = /\d+/;
+    var regex = /\d+/;
   
-  	if (typeof msg === 'undefined') msg = console.log;
+    if (typeof msg === 'undefined') msg = console.log;
 
-	var expected_jobs_str = document.querySelector(selector).textContent.trim()
-  	var expected_jobs = regex.exec(expected_jobs_str)[0];
-	
-  	out["expected_jobs"] = expected_jobs;
+  var expected_jobs_str = document.querySelector(selector).textContent.trim().split('de').pop().trim()
+    var expected_jobs = regex.exec(expected_jobs_str)[0];
+  
+    out["expected_jobs"] = expected_jobs;
 
-  	return out;
+    return out;
 })();
 
+
 /*Extract*/
+
 (function () {
   var jobs = [];
   var out = {};
   // var cont = 1;
   var json;
   // do {
-  var data = {"opportunitySearch":{"Top":50,"Skip":0,"QueryString":"","OrderBy":[{"Value":"postedDateDesc","PropertyName":"PostedDate","Ascending":false}],"Filters":[{"t":"TermsSearchFilterDto","fieldName":4,"extra":null,"values":[]},{"t":"TermsSearchFilterDto","fieldName":5,"extra":null,"values":[]},{"t":"TermsSearchFilterDto","fieldName":6,
-  "extra":null,"values":[]}]},"matchCriteria":{"PreferredJobs":[],
-                                               "Educations":[],"LicenseAndCertifications":[],
-                                               "Skills":[],"hasNoLicenses":false,"SkippedSkills":[]}}
+  var data = {"opportunitySearch":{"Top":50,"Skip":0,"QueryString":"","OrderBy":[{"Value":"postedDateDesc","PropertyName":"PostedDate","Ascending":false}],"Filters":[{"t":"TermsSearchFilterDto","fieldName":4,"extra":null,"values":[]},{"t":"TermsSearchFilterDto","fieldName":5,"extra":null,"values":[]},{"t":"TermsSearchFilterDto","fieldName":6,"extra":null,"values":[]}]},"matchCriteria":{"PreferredJobs":[],"Educations":[],
+"LicenseAndCertifications":[],"Skills":[],
+"hasNoLicenses":false,"SkippedSkills":[]}}
 
   $.ajax({
-    url: 'https://recruiting.ultipro.com/AKE1000ASEPA/JobBoard/b855fc7e-c6e0-90cc-b829-ddbebeb6f274/JobBoardView/LoadSearchResults',                                            // 1) url
+    url: 'https://recruiting.ultipro.com/HAS1002/JobBoard/32d55e49-a2ef-0d9d-ec75-ee5caf4de741/JobBoardView/LoadSearchResults',                                            // 1) url
     headers: {                                                      
       "accept": "application/json, text/javascript, */*; q=0.01",
-      "Content-Type":"application/json; charset=UTF-8"    // 2) headers
+      "Content-Type":"application/json; charset=utf-8"    // 2) headers
     },
     type: 'POST',                                        // 3) tipo
     dataType: "json",                                   // 4) data que retorna
@@ -48,12 +49,12 @@
     data: JSON.stringify(data),
     async: false,
     success: function (result) {
-      msg("\x1b[45m loading jobs...");
-      json = result.opportunities;                                 // 5) ruta de los trabajos
+      msg("\x1b[32m loading jobs...");
+       json = result.opportunities;                                 // 5) ruta de los trabajos
       //msg(json.length);
       for (var i = 0; i < json.length; i++) {
         var job = {};
-        job.title = json[i].Title;
+         job.title = json[i].Title;
         var domain = 'https://recruiting.ultipro.com/AKE1000ASEPA/JobBoard/b855fc7e-c6e0-90cc-b829-ddbebeb6f274/OpportunityDetail?opportunityId=';
         job.url = domain +json[i].Id;        
         job.location = json[i].Locations[0].Address.City +', ' + json[i].Locations[0].Address.State.Code +', ' + json[i].Locations[0].Address.Country.Code ;
@@ -63,8 +64,9 @@
         //job.logo = json[i].;
         //job.source_apply_email = json[i].;
         //job.source_empname = json[i].;
-
+        //job.source_jobtype = json[i].;
         //job.source_salary = json[i].;
+        //job.dateposted_raw = json[i].;
         //job.dateclosed_raw = json[i].;
         /*  var fecha = json[i].
                                 fecha = fecha.split(" ")[0].split("-");
@@ -85,7 +87,7 @@
   return out;
 })();
 
-/* Pagination*/
+/* Job Description*/
 (function() {
   var out = {};
   var job = {};
