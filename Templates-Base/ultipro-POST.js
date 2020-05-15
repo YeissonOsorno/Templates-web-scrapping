@@ -29,64 +29,79 @@
 
 (function () {
   var jobs = [];
-  var out = {};
-  // var cont = 1;
-  var json;
-  // do {
-  var data = {"opportunitySearch":{"Top":50,"Skip":0,"QueryString":"","OrderBy":[{"Value":"postedDateDesc","PropertyName":"PostedDate","Ascending":false}],"Filters":[{"t":"TermsSearchFilterDto","fieldName":4,"extra":null,"values":[]},{"t":"TermsSearchFilterDto","fieldName":5,"extra":null,"values":[]},{"t":"TermsSearchFilterDto","fieldName":6,"extra":null,"values":[]}]},"matchCriteria":{"PreferredJobs":[],"Educations":[],
-"LicenseAndCertifications":[],"Skills":[],
-"hasNoLicenses":false,"SkippedSkills":[]}}
+  var out = {};  
+  var json; 
+  var countries = {
+    AL:"Alabama", AK:"Alaska", AZ:"Arizona", AR:"Arkansas", CA:"California", CO: "Colorado", CT: "Connecticut", DE: "Delaware" ,
+    FL: "Florida", GA: "Georgia", HI: "Hawaii", ID: "Idaho", IL: "llinois", IN: "Indiana", IA: "Iowa", KS:"Kansas", KY:"entucky", 
+    LA:"Louisiana", ME:"Maine", MD:"Maryland", MA:"Massachusetts", MI:"Míchigan", MN:"Minnesota", MS:"Mississippi", MO:"Missouri",
+    MT:"Montana", NE:"Nebraska", NV:"Nevada", NH:"New Hampshire", NJ:"New Jersey", NM:"New Mexico", NY:"New York", NC:"North Carolina",
+    ND:"North Dakota", OH:"Ohio", OK:"Oklahoma", OR:"Oregon", PA:"Pennsylvania", RI:"Rhode Island", SC:"South Carolina", SD:"South Dakota",
+    TN:"Tennessee", TX:"Texas", UT:"Utah", VT:"Vermont", VA: "Virginia", WA: "Washington", WV: "West", WI: "Wisconsin", WY: "Wyoming"
+  }
+  var data = {"opportunitySearch":{"Top":50,"Skip":0,"QueryString":"","OrderBy":[{"Value":"postedDateDesc","PropertyName":"PostedDate","Ascending":false}],
+                                   "Filters":[{"t":"TermsSearchFilterDto","fieldName":4,"extra":null,"values":[]},{"t":"TermsSearchFilterDto","fieldName":5,
+                                                                                                                   "extra":null,"values":[]},{"t":"TermsSearchFilterDto","fieldName":6,"extra":null,"values":[]}]},"matchCriteria":{"PreferredJobs":[],"Educations":[],
+                    "LicenseAndCertifications":[],"Skills":[],"hasNoLicenses":false,"SkippedSkills":[]}}
 
   $.ajax({
-    url: 'https://recruiting.ultipro.com/HAS1002/JobBoard/32d55e49-a2ef-0d9d-ec75-ee5caf4de741/JobBoardView/LoadSearchResults',                                            // 1) url
+    url: 'https://recruiting2.ultipro.com/RIC1008RICM/JobBoard/12642768-45c0-4aea-ab33-3b03509dc7f8/JobBoardView/LoadSearchResults',                                            // 1) url
     headers: {                                                      
       "accept": "application/json, text/javascript, */*; q=0.01",
-      "Content-Type":"application/json; charset=utf-8"    // 2) headers
+      "Content-Type":"application/json; charset=utf-8"   
     },
-    type: 'POST',                                        // 3) tipo
-    dataType: "json",                                   // 4) data que retorna
+    type: 'POST',                                     
+    dataType: "json",                                 
     //data: data,
     data: JSON.stringify(data),
     async: false,
     success: function (result) {
       msg("\x1b[32m loading jobs...");
-       json = result.opportunities;                                 // 5) ruta de los trabajos
+      json = result.opportunities;                                
       //msg(json.length);
       for (var i = 0; i < json.length; i++) {
         var job = {};
-         job.title = json[i].Title;
-        var domain = 'https://recruiting.ultipro.com/AKE1000ASEPA/JobBoard/b855fc7e-c6e0-90cc-b829-ddbebeb6f274/OpportunityDetail?opportunityId=';
-        job.url = domain +json[i].Id;        
-        job.location = json[i].Locations[0].Address.City +', ' + json[i].Locations[0].Address.State.Code +', ' + json[i].Locations[0].Address.Country.Code ;
+        job.title = json[i].Title;
+        var domain = 'https://recruiting2.ultipro.com/RIC1008RICM/JobBoard/12642768-45c0-4aea-ab33-3b03509dc7f8/OpportunityDetail?opportunityId=';
+        job.url = domain +json[i].Id;
+        var geoUS = new Geo(Object.keys(countries),Object.values(countries)); 
+        var newLocation = geoUS.doCleaning( json[i].Locations[0].Address.State.Code.trim()); 
+        job.location = json[i].Locations[0].Address.City +', ' +newLocation[0]+', ' + json[i].Locations[0].Address.Country.Code ;
         job.dateposted_raw = json[i].PostedDate.split('T').shift().trim().split('-').reverse().join('/');
         var jobtype  = json[i].FullTime;
         if(jobtype == true)  job.source_jobtype  = 'Full Time';
-        //job.logo = json[i].;
-        //job.source_apply_email = json[i].;
-        //job.source_empname = json[i].;
-        //job.source_jobtype = json[i].;
-        //job.source_salary = json[i].;
-        //job.dateposted_raw = json[i].;
-        //job.dateclosed_raw = json[i].;
-        /*  var fecha = json[i].
-                                fecha = fecha.split(" ")[0].split("-");
-                                job.dateposted_raw =  fecha[1]+'/'+fecha[2]+'/'+fecha[0];*/
+
         job.temp = 1;
         jobs.push(job);
       }
-      // cont++;
     },
     error: function (error) {
       msg(error);
     }
   });
-  //  } while (json.length > 0);                                 // 6) condicion de parada
-
-
   out["jobs"] = jobs;
   return out;
 })();
-
+function Geo(countryCodesArr, countriesArr) {
+  this.countryCodesArr = countryCodesArr;
+  this.countriesArr = countriesArr;
+  this.doCleaning = (word)=>{
+    var result, countryResult;
+    result = this.doSearch(this.countryCodesArr,word);
+    countryResult = this.countriesArr[result];
+    return new Array(countryResult, result);
+  }
+  this.doSearch = (arraySearch, targetValue)=> {
+    let arrayDoSearch = arraySearch;
+    let length = arrayDoSearch.length;
+    for(var item = 0; item<length; item++){
+      if(arrayDoSearch[item] === targetValue){
+        console.log('\x1b[32m Find');
+        return item;
+      }
+    }  
+  }
+}
 /* Job Description*/
 (function() {
   var out = {};

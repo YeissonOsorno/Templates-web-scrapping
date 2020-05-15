@@ -1,3 +1,11 @@
+/**
+ * [dateAgo Funcion para convertir texto a fechas]
+ * @param  {[String]} text                  [Valor en texto extraido]
+ * @param  {[String]} char_separator        [Caracter separador]
+ * @param  {[Number]} position_value_DWMY   [Posición donde esta el valor en numero]
+ * @param  {[Number]} position_word_DWMY    [Posición donde esta el valor o Days o Weeks etc]
+ * @return {[String]}                       [Retorna un valor en string pero con formato de fecha]
+ */
 function dateAgo (text, char_separator, position_value_DWMY, position_word_DWMY){
     var numberDWMY = parseInt(text.trim().split(char_separator)[position_value_DWMY],10); //obtengo el valor numerico del dia, sem, mes o año
     if(typeof text.split(char_separator)[position_word_DWMY]!=='undefined'){

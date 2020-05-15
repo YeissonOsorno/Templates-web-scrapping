@@ -15,7 +15,7 @@
       } else {
         out["pass_it"] = pass_it;
     }
-var link = document.querySelectorAll('a.shortlink');
+var link = document.querySelectorAll('div[data-ph-at-id="category-list-view"] a');
       for(var i = 0; i<link.length;i++){
         var element = link[i];
       
@@ -27,6 +27,29 @@ var link = document.querySelectorAll('a.shortlink');
     out["wait"] = true;
     return out;
 })();
+function dummy(){
+  var dummyValidation = {
+    expectedJobs : function(selector){
+      var expectedAll = document.querySelectorAll(selector);
+      var expectedJobs = expectedAll.length;
+      var count = 0;
+      for(var elem = 0;elem < expectedJobs; elem++ )
+      {
+        var stringJob = expectedAll[elem].textContent.trim().replace('\n','').replace(/ /gi,'').trim();               
+        var regex = /\d+/;  
+        if (typeof msg === 'undefined') msg = console.log;        
+        var expected_jobs = regex.exec(stringJob)[0];
+        count = count + Number(expected_jobs);
+      }
+      return count;
+    }
+  }
+  return dummyValidation;
+}
+
+var dummy = dummy();
+var expected_jobs = dummy.expectedJobs("p.job-count");
+console.log("Expected jobs ====> "  +  expected_jobs);
 
 
 
@@ -37,7 +60,7 @@ var link = document.querySelectorAll('a.shortlink');
     var next_page_selector = 'div.pagination > a.selected + a'; 
     var clickable_elem = document.querySelector(next_page_selector);
       out["pass_it"] = pass_it;
-      
+      msg("\x1b[32m -----------PAGINATION--------------");   
       if (!clickable_elem) {
           // Pregunta si la siguiente url existe
           out["pass_it"]["currentUrl"] += 1;

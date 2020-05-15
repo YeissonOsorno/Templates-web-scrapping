@@ -50,7 +50,7 @@ if (!pass_it["cont"]) {
 var element = document.querySelector("pre").textContent;
 var json = JSON.parse(element);
 var jobs = json.jobRequisitions;
-
+const dummy = dummyJobs();
 var returnedJobs = [];    
 for(i in jobs) {
   var job = {};/*init*/
@@ -69,7 +69,7 @@ job.dateposted_raw = jobs[i].postDate.split('T').shift().trim().split('-').rever
       job.source_jobtype =jobs[i].workLevelCode.shortName.replace('Hourly','').trim()
   }
 
-  job.url = "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=bd93d69e-8763-4906-8dce-e498b2cfdeea&ccId=19000101_000001&jobId="+jobs[i].customFieldGroup.stringFields[0].stringValue.trim()                 
+  job.url = dummy.+jobs[i].customFieldGroup.stringFields[0].stringValue.trim()                 
   job.temp = "1";
   returnedJobs.push(job);
 }
@@ -78,6 +78,15 @@ out["pass_it"]["jobs"] = returnedJobs.length;
 out["jobs"]= returnedJobs;
 return out;
 })();
+
+/*DummyJobs*/
+function dummyJobs()
+{
+  const dummy = {
+    domain : "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=70ce018a-d4cc-437d-84b7-a2bd1bf8433a&ccId=19000101_000001&jobId="
+  }
+  return dummy;
+}
 
   //---------------------------------------------------pagination----------------------------------------------------
   (function() {

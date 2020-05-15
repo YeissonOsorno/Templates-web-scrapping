@@ -2,10 +2,30 @@
 (function() {
   var out = {};
     out.iframeSelector = "iframe#icims_content_iframe"
-    out.iframeWaitFor = ".iCIMS_MainWrapper.iCIMS_ListingsPage   > ul > li"
+    out.iframeWaitFor = "div.container-fluid.iCIMS_JobsTable >div.row"
     return out;
 })();
+/*Expected jobs */
+(function() {
+  var out = {};
+    var selector = "div.pull-left";
+    var regex = /\d+/;
+  
+    if (typeof msg === 'undefined') msg = console.log;
+  
+    var iframe_selector = "#icims_iframe_span > iframe";   
+    var iframeDocument = document.querySelector(iframe_selector).contentWindow.document;
 
+    var expected_jobs_str = iframeDocument.querySelector(selector).textContent.split(" of ").pop().trim();
+    var expected_jobs = regex.exec(expected_jobs_str)[0];
+    if(expected_jobs == 1)
+      expected_jobs = iframeDocument.querySelectorAll("li.row").length;
+    else
+      expected_jobs = (expected_jobs*20)-20; //we are counting 20 by page, minus 1 page
+    out["expected_jobs"] = expected_jobs;
+
+    return out;
+})();
 /* Extract */
 (function() {
     var out = {};
@@ -20,7 +40,7 @@
     }
     var iframe_selector = "#icims_content_iframe";
     var iframeDocument = document.querySelector(iframe_selector).contentWindow.document;
-    var html_jobs = iframeDocument.querySelectorAll(".iCIMS_MainWrapper.iCIMS_ListingsPage   > ul > li");
+    var html_jobs = iframeDocument.querySelectorAll("div.container-fluid.iCIMS_JobsTable >div.row");
     var jobs = [];
   
     for(var x in html_jobs){
@@ -48,7 +68,7 @@
       //job.source_empname = elem.querySelector("").textContent.trim();
       // job.source_jobtype = elem.querySelector("div.iCIMS_JobHeaderGroup dl:nth-child(3)").textContent.trim();
       //job.source_salary = elem.querySelector("").textContent.trim();
-      job.temp = 09082019;
+      job.temp = 1;
       jobs.push(job);
     }
     

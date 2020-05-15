@@ -139,7 +139,7 @@ function dateAgo (text, char_separator, position_value_DWMY, position_word_DWMY)
 //Function validate location and headquarter
 function validateLocation(location)
 {
-  var headquarter = 'Austin, TX' ;
+  var headquarter = 'Roswell, GA' ;
   if(location.indexOf('Remote')>-1)
   {
     location = headquarter;
@@ -170,7 +170,8 @@ function validateLocation(location)
     if (out["pass_it"]["jobs"] >= 50) {
     
     //url, cambia según el JSON
-    var url = "https://q2ebanking.wd5.myworkdayjobs.com/Q2/0/searchPagination/318c8bb6f553100021d223d9780d30be/" + out["pass_it"].cont;
+    var url = "https://valmont.wd1.myworkdayjobs.com/ValmontCareers/fs/searchPagination/318c8bb6f553100021d223d9780d30be/" + out["pass_it"].cont;
+   
   out["pass_it"].cont += 50;
     window.location.href = url;
     out["has_next_page"] = true;

@@ -1,8 +1,8 @@
 /*Before Extract*/
 (function() {
-	var out = {};
-  	out.iframeSelector = "iframe#icims_content_iframe"
-  	out.iframeWaitFor = "li.row"
+  var out = {};
+    out.iframeSelector = "iframe#icims_content_iframe"
+    out.iframeWaitFor = "div.container-fluid.iCIMS_JobsTable> div.row"
     return out;
 })();
 
@@ -21,7 +21,7 @@
   }
   var iframe_selector = "#icims_content_iframe";
   var iframeDocument = document.querySelector(iframe_selector).contentWindow.document;
-  var html_jobs = iframeDocument.querySelectorAll(".iCIMS_MainWrapper.iCIMS_ListingsPage   > ul > li");
+  var html_jobs = iframeDocument.querySelectorAll("div.container-fluid.iCIMS_JobsTable> div.row");
   var jobs = [];
 
   for(var x in html_jobs){
@@ -128,7 +128,14 @@ if (parseInt(min, 10) < parseInt(max, 10)) {/*elem-exist*/
     out["wait"] = true;
     return out;
 })();
-
+/*Before Job description*/
+(function() {
+  var out = {};
+    out.iframeSelector = "#icims_iframe_span > iframe";   
+    out.iframeWaitFor = "div.iCIMS_JobContent";
+    return out;
+})();
+  
 
 /* Description */
 (function() {
