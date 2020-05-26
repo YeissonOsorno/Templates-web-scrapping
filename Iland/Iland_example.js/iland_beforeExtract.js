@@ -30,11 +30,8 @@
         var location =  elem.querySelector('.job-item-location').textContent.trim();
         //var fecha =  elem.querySelector().textContent.trim().split('/');
 
-
-
         out['pass_it']['title'] = title;
         out['pass_it']['location'] = location;
-
 
         if(typeof(selector_click_job)=='undefined'){
             elem.click();
