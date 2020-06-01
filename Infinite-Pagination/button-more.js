@@ -2,7 +2,7 @@
 *Descripción : Template para Infinite-pagination cuando existe un boton de more, y hace una espera
 *Autor : Yeisson Osorno
 */
-var selector = "#direct_moreLessLinks_listingDiv a"; // selector del boton
+var selector = "button#tile-more-results"; // selector del boton
 
 var f = function(){
     var out = {};

@@ -73,51 +73,53 @@ function Geo(countryCodesArr, countriesArr) {
 
 /* Description */
 (function() {
-    var out = {};
-    var job = {};
-    var selector = "div.posting-page div.page-full-width:last-child";
-    var remove_selectors = [];
-    //var job = pass_it["job"];
-    var full_html = document.querySelector(selector);
-    // remove something from the jobdatata
-    if (remove_selectors.length > 0) remove_selectors.forEach(remove_selector => {if(full_html.querySelector(remove_selector)) full_html.querySelector(remove_selector).remove();});
-    if (typeof cleanHTML == "undefined") cleanHTML = function(x){return x};
-    if (typeof msg == "undefined") msg = console.log;
+  var out = {};
+  var job = {};
+  var selector = "div.posting-page div.page-full-width:last-child";
+  var remove_selectors = [];
+  //var job = pass_it["job"];
+  var full_html = document.querySelector(selector);
+  // remove something from the jobdatata
+  if (remove_selectors.length > 0) remove_selectors.forEach(remove_selector => {if(full_html.querySelector(remove_selector)) full_html.querySelector(remove_selector).remove();});
+  if (typeof cleanHTML == "undefined") cleanHTML = function(x){return x};
+  if (typeof msg == "undefined") msg = console.log;
+  job.source_jobtype = document.querySelector('div.posting-categories >div:last-child').textContent.trim();
+  job.html      = full_html.innerHTML.trim();    
+  //job.html = removeTextBefore(job.html, 'Summary of Job Duties', false);
+  //job.html = removeTextAfter(job.html, 'Application Instructions', true);
+  job.html = removeTextBefore(job.html, 'The job will be hands-on', false);
+  //job.html = removeTextAfter(job.html, 'Application Instructions', true);
+  job.html = removeTextBefore(job.html, 'Responsibilities:', false);
+  job.html = removeTextAfter(job.html, 'Magnet Forensics Inc. is an affirmative action', true);
+  job.html = removeTextAfter(job.html, 'If you don’t check all the boxes', true);
   
-    job.html      = full_html.innerHTML.trim();    
-    //job.html = removeTextBefore(job.html, 'Summary of Job Duties', false);
-    //job.html = removeTextAfter(job.html, 'Application Instructions', true);
-    job.html = removeTextBefore(job.html, 'The job will be hands-on', false);
-    //job.html = removeTextAfter(job.html, 'Application Instructions', true);
-    job.html = removeTextBefore(job.html, 'Responsibilities:', false);
-    job.html = removeTextAfter(job.html, 'We are rapidly expanding', true);
-    
-    job.html      = cleanHTML(job.html);
-    var tmp       = document.createElement('div');
-    tmp.innerHTML = job.html;
-    job.jobdesc   = tmp.textContent.trim();
-    job.jobdesc   = cleanHTML(job.jobdesc);
-    out["job"] = job;
-    return out;
-  
-  })();
-  function removeTextBefore(html, text, flag) {
-    var newHtml = html;
-    if (newHtml.indexOf(text) > -1) {
-      newHtml = newHtml.split(text).pop();
-      if (!flag) {
-        newHtml = "<h3>" + text + "</h3>" + newHtml;
-      }       
-    }
-    return newHtml;
+  job.html      = cleanHTML(job.html);
+  var tmp       = document.createElement('div');
+  tmp.innerHTML = job.html;
+  job.jobdesc   = tmp.textContent.trim();
+  job.jobdesc   = cleanHTML(job.jobdesc);
+  out["job"] = job;
+  return out;
+
+})();
+function removeTextBefore(html, text, flag) {
+  var newHtml = html;
+  if (newHtml.indexOf(text) > -1) {
+    newHtml = newHtml.split(text).pop();
+    if (!flag) {
+      newHtml = "<h3>" + text + "</h3>" + newHtml;
+    }       
   }
-  function removeTextAfter(html, text, flag) {
-    var newHtml = html;
-    if (newHtml.indexOf(text) > -1) {
-      newHtml = newHtml.split(text).shift();
-      if (!flag) {
-        newHtml = newHtml + "<p>" + text + "</p>";
-      }       
-    }
-    return newHtml;
+  return newHtml;
+}
+function removeTextAfter(html, text, flag) {
+  var newHtml = html;
+  if (newHtml.indexOf(text) > -1) {
+    newHtml = newHtml.split(text).shift();
+    if (!flag) {
+      newHtml = newHtml + "<p>" + text + "</p>";
+    }       
   }
+  return newHtml;
+}
+
