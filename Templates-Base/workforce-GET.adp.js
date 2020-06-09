@@ -35,49 +35,57 @@
 
 /*Extract*/
 (function() {
-var out = {};
+  var out = {};
 
-if(typeof pass_it == "undefined") pass_it = {};
-if (!pass_it["cont"]) {
-  out["pass_it"] = {
-    "cont": 1,
-    "jobs": 0
-  };
-} else {
-  out["pass_it"] = pass_it;
-}
-
-var element = document.querySelector("pre").textContent;
-var json = JSON.parse(element);
-var jobs = json.jobRequisitions;
-const dummy = dummyJobs();
-var returnedJobs = [];    
-for(i in jobs) {
-  var job = {};/*init*/
-
-  job.title = jobs[i].requisitionTitle;
-  job.title = job.title.split("-").shift();
-  job.title = job.title.split("(").shift();
-  job.title = job.title.split(",").shift();
-  job.location = jobs[i].requisitionLocations[0].nameCode.shortName;
-  if(job.location == "" || job.location == undefined) {
-    job.location = "United States";
+  if(typeof pass_it == "undefined") pass_it = {};
+  if (!pass_it["cont"]) {
+    out["pass_it"] = {
+      "cont": 1,
+      "jobs": 0
+    };
+  } else {
+    out["pass_it"] = pass_it;
   }
-job.dateposted_raw = jobs[i].postDate.split('T').shift().trim().split('-').reverse().join('/');
-  if(jobs[i].workLevelCode)
-  {
+
+  var element = document.querySelector("pre").textContent;
+  var json = JSON.parse(element);
+  var jobs = json.jobRequisitions;
+  const dummy = dummyJobs();
+  var returnedJobs = [];    
+  for(i in jobs) {
+    var job = {};/*init*/
+
+    job.title = jobs[i].requisitionTitle;   
+    if(jobs[i].requisitionLocations[0]){
+    		job.location = jobs[i].requisitionLocations[0].nameCode.shortName;
+    }else{
+      job.location = "Northbrook, Illinois";
+    }
+    
+    job.dateposted_raw = jobs[i].postDate.split('T').shift().trim().split('-').reverse().join('/');
+    if(jobs[i].workLevelCode)
+    {
       job.source_jobtype =jobs[i].workLevelCode.shortName.replace('Hourly','').trim()
+    }
+
+    job.url = dummy.domain+jobs[i].customFieldGroup.stringFields[0].stringValue.trim()                 
+    job.temp = "1";
+    returnedJobs.push(job);
   }
 
-  job.url = dummy.+jobs[i].customFieldGroup.stringFields[0].stringValue.trim()                 
-  job.temp = "1";
-  returnedJobs.push(job);
-}
-
-out["pass_it"]["jobs"] = returnedJobs.length;
-out["jobs"]= returnedJobs;
-return out;
+  out["pass_it"]["jobs"] = returnedJobs.length;
+  out["jobs"]= returnedJobs;
+  return out;
 })();
+
+/*DummyJobs*/
+function dummyJobs()
+{
+  const dummy = {
+    domain : "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=4ee6cf69-a7b8-4505-906d-f0077f07c536&ccId=19000101_000001&jobId="
+  }
+  return dummy;
+}
 
 /*DummyJobs*/
 function dummyJobs()
@@ -156,46 +164,51 @@ function dummyJobs()
   })();
   /*Job description*/
   (function() {
-  var out = {};
-  var job = {};
-  var selector = 'div[name="jobDescriptionView"]';
-  var remove_selectors = [];
-  //var job = pass_it["job"];
-  var full_html = document.querySelector(selector);
-  // remove something from the jobdatata
-  if (remove_selectors.length > 0) remove_selectors.forEach(remove_selector => {if(full_html.querySelector(remove_selector)) full_html.querySelector(remove_selector).remove();});
-  if (typeof cleanHTML == "undefined") cleanHTML = function(x){return x};
-  if (typeof msg == "undefined") msg = console.log;
-
-  job.html      = full_html.innerHTML.trim();    
-  job.html = removeTextBefore(job.html, 'Duties', false);
-  job.html = removeTextAfter(job.html, 'Copyright ©', true);
-  job.html      = cleanHTML(job.html);
-  var tmp       = document.createElement('div');
-  tmp.innerHTML = job.html;
-  job.jobdesc   = tmp.textContent.trim();
-  job.jobdesc   = cleanHTML(job.jobdesc);
-  out["job"] = job;
-  return out;
-
-})();
-function removeTextBefore(html, text, flag) {
-  var newHtml = html;
-  if (newHtml.indexOf(text) > -1) {
-    newHtml = newHtml.split(text).pop();
-    if (!flag) {
-      newHtml = "<h3>" + text + "</h3>" + newHtml;
-    }       
+    var out = {};
+    var job = {};
+    var selector = 'div.job-description-data';
+    var remove_selectors = [];
+    //var job = pass_it["job"];
+    var full_html = document.querySelector(selector);
+    // remove something from the jobdatata
+    if (remove_selectors.length > 0) remove_selectors.forEach(remove_selector => {if(full_html.querySelector(remove_selector)) full_html.querySelector(remove_selector).remove();});
+    if (typeof cleanHTML == "undefined") cleanHTML = function(x){return x};
+    if (typeof msg == "undefined") msg = console.log;
+    if(document.querySelector('span.job-description-worker-catergory')){
+      job.source_jobtype = document.querySelector('span.job-description-worker-catergory').textContent.trim();
+    }
+    job.html      = full_html.innerHTML.trim();    
+    job.html      = cleanHTML(job.html);
+    job.html = removeTextBefore(job.html, 'POSITION PURPOSE:', false);
+    job.html = removeTextBefore(job.html, 'POSITION PURPOSE:', false);
+  
+    job.html = removeTextAfter(job.html, 'Copyright ©', true);
+  
+    var tmp       = document.createElement('div');
+    tmp.innerHTML = job.html;
+    job.jobdesc   = tmp.textContent.trim();
+    job.jobdesc   = cleanHTML(job.jobdesc);
+    out["job"] = job;
+    return out;
+  
+  })();
+  function removeTextBefore(html, text, flag) {
+    var newHtml = html;
+    if (newHtml.indexOf(text) > -1) {
+      newHtml = newHtml.split(text).pop();
+      if (!flag) {
+        newHtml = "<h3>" + text + "</h3>" + newHtml;
+      }       
+    }
+    return newHtml;
   }
-  return newHtml;
-}
-function removeTextAfter(html, text, flag) {
-  var newHtml = html;
-  if (newHtml.indexOf(text) > -1) {
-    newHtml = newHtml.split(text).shift();
-    if (!flag) {
-      newHtml = newHtml + "<p>" + text + "</p>";
-    }       
+  function removeTextAfter(html, text, flag) {
+    var newHtml = html;
+    if (newHtml.indexOf(text) > -1) {
+      newHtml = newHtml.split(text).shift();
+      if (!flag) {
+        newHtml = newHtml + "<p>" + text + "</p>";
+      }       
+    }
+    return newHtml;
   }
-  return newHtml;
-}
