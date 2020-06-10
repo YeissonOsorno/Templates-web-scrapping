@@ -1,4 +1,4 @@
-/*Expected jobs*/
+/* Expected jobs*/
 (function() {
   var out = {};
      try{
@@ -7,36 +7,39 @@
        var json = JSON.parse(element);
        var jobs = json.body.children[0].facetContainer.paginationCount.value;
        out["expected_jobs"] = jobs;
-       
+
      }catch(error){
         out["wait"] = 500;
-       
+
      }
-  
+
     return out;
 })();
-
-/*Before Extract */
+/* Before Extract*/
 (function() {
   var out = {};
-     try{
-       var element = document.querySelector("pre").textContent;
-      //msg(element);
-       var json = JSON.parse(element);
-       var jobs = json.body.children[0].children[0].listItems;
-       out["json"] = jobs;
-     }catch(error){
-        out["wait"] = 500;
-       
-     }
-  
-    return out;
+  try{
+    var element = document.querySelector("pre").textContent;
+    //msg(element);
+    var json = JSON.parse(element);
+    var jobs = json.body.children[0].children[0].listItems;
+    out["json"] = jobs;
+  }catch(error){
+    if(document.querySelector("pre")){
+      out["has_next_page"] = true;
+    }else {
+      out["has_next_page"] = false;
+    }
+
+  }
+
+  return out;
 })();
 
-/*Extract*/
+/* Extract*/
 (function() {
   var out = {};
-
+  out.pic = true;
   if(typeof pass_it == "undefined") pass_it = {};
   if (!pass_it["cont"]) {
     out["pass_it"] = {
@@ -48,19 +51,21 @@
   }
 
   var jobs =  pass_it["json"];
-  var returnedJobs = [];    
+  var returnedJobs = [];
   if(!jobs){
-    var element = document.querySelector("pre").textContent;    
+    var element = document.querySelector("pre").textContent;
     var json = JSON.parse(element);
     var jobs = json.body.children[0].children[0].listItems;
   }
 
-  for(i in jobs) {
+  for(var i in jobs) {
     var job = {};
-    job.title = jobs[i].title.instances[0].text; 
-    job.url = "https://q2ebanking.wd5.myworkdayjobs.com" + jobs[i].title.commandLink;
+    job.title = jobs[i].title.instances[0].text;
+    job.url = "https://huntington.wd5.myworkdayjobs.com" + jobs[i].title.commandLink;
     var location=validateLocation(jobs[i].subtitles[1].instances[0].text.split("-").reverse().join(", "));
     job.location = location ;
+    if(job.location.indexOf('Southgate')>-1) job.location = "Southgate, MI,US";
+
     var dateposted = jobs[i].subtitles[2].instances[0].text.replace(/Posted|Ago/ig,'').trim();
     job.dateposted_raw = dateAgo(dateposted, ' ', 0, 1);
     job.temp = 1;
@@ -73,9 +78,10 @@
         if(array[i].iconName == 'LOCATION'){
           var jobx = {};
           jobx.title = job.title;
-          jobx.url = job.url; 
+          jobx.url = job.url;
           var locationx=validateLocation(array[i].imageLabel);
           jobx.location =  locationx;
+          if(jobx.location.indexOf('Southgate')>-1) jobx.location = "Southgate, MI,US";
           jobx.dateposted_raw  =  job.dateposted_raw;
           jobx.temp = job.temp;
           returnedJobs.push(jobx);
@@ -101,13 +107,13 @@ function getDescription(url) {
   xhrrequest.setRequestHeader("Pragma","no-cache");
   var response = "";
   xhrrequest.onreadystatechange = function() {
-    if(xhrrequest.readyState == 4 && xhrrequest.status == 200) 
+    if(xhrrequest.readyState == 4 && xhrrequest.status == 200)
     {
       //console.log(xhrrequest.responseText);
       response = xhrrequest.responseText;
     }
   };
-  xhrrequest.send(); 
+  xhrrequest.send();
   return response;
 }
 //Function convert ago to date
@@ -146,20 +152,18 @@ function validateLocation(location)
   }
   if(location.indexOf('Posted')>-1)
   {
-    location = headquarter ; 
+    location = headquarter ;
   }
   return location;
 }
+/* pagination*/
 
-/* Pagination */ 
 (function() {
-    var out = {};
-    
-    if(typeof pass_it == "undefined") pass_it = {};
+  var out = {};
+  if(typeof pass_it == "undefined") pass_it = {};
   if(typeof msg == "undefined") msg = function(x){return x;};
-   
-    if (!pass_it["cont"]) {
-        out["pass_it"] = {
+  if (!pass_it["cont"]) {
+    out["pass_it"] = {
       "cont": 0,
       "jobs": 0
     };
@@ -167,21 +171,22 @@ function validateLocation(location)
     out["pass_it"] = pass_it;
   }
 
-    if (out["pass_it"]["jobs"] >= 50) {
-    
-    //url, cambia según el JSON
-    var url = "https://valmont.wd1.myworkdayjobs.com/ValmontCareers/fs/searchPagination/318c8bb6f553100021d223d9780d30be/" + out["pass_it"].cont;
-   
-  out["pass_it"].cont += 50;
+  if (out["pass_it"]["jobs"] >= 50) {
+    var url = "https://huntington.wd5.myworkdayjobs.com/HNBcareers/fs/searchPagination/318c8bb6f553100021d223d9780d30be/" + out["pass_it"].cont;
+    out["pass_it"].cont += 50;
     window.location.href = url;
-    out["has_next_page"] = true;
-  } else {
-        out["has_next_page"] = false;
-  }
-    return out;
-})();
+    if(out["pass_it"].cont == 300){
+      out["has_next_page"] = false;
+    }else {
+      out["has_next_page"] = true;
+    }
 
-/* Job Description */
+  } else {
+    out["has_next_page"] = false;
+  }
+  return out;
+})();
+/* Description*/
 (function() {
   var out = {};
   var job = {};
@@ -202,10 +207,10 @@ function validateLocation(location)
   if (typeof cleanHTML == "undefined") cleanHTML = function(x){return x};
   if (typeof msg == "undefined") msg = console.log;
 
-  job.html      = full_html.innerHTML.trim();  
- 
+  job.html      = full_html.innerHTML.trim();
+
   job.html = removeTextAfter(job.html, 'Location', true);
-  //job.html = removeTextBefore(job.html, 'Summary of Job Duties', false);  
+  //job.html = removeTextBefore(job.html, 'Summary of Job Duties', false);
   job.html      = cleanHTML(job.html);
   job.html = removeTextAfter(job.html, 'Location', true);
   var tmp       = document.createElement('div');
@@ -222,7 +227,7 @@ function removeTextBefore(html, text, flag) {
     newHtml = newHtml.split(text).pop();
     if (!flag) {
       newHtml = "<h3>" + text + "</h3>" + newHtml;
-    }       
+    }
   }
   return newHtml;
 }
@@ -232,9 +237,7 @@ function removeTextAfter(html, text, flag) {
     newHtml = newHtml.split(text).shift();
     if (!flag) {
       newHtml = newHtml + "<p>" + text + "</p>";
-    }       
+    }
   }
   return newHtml;
 }
-
-
