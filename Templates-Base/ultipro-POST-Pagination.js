@@ -152,7 +152,7 @@
           {
             job.source_jobtype  = 'Full Time';
           }else{
-            job.source_jobtype  = 'Full Time';
+            job.source_jobtype  = 'Part Time';
           }
           
           job.temp = 1;
