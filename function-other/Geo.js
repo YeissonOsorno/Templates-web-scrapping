@@ -9,6 +9,9 @@ var countries = {
 
 var geoUS = new Geo(Object.keys(countries),Object.values(countries)); 
 var newLocation = geoUS.doCleaning('CA'); 
+let newLocation = geoUS.doCleaning(_location[1].trim());
+_location.splice(1,1,newLocation[0])
+job.location = _location.join(', ').trim();
 
 console.log(newLocation)
 

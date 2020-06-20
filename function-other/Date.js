@@ -5,7 +5,12 @@ var months = {
 
 var _date = new _Date(Object.keys(months),Object.values(months)); 
 var newDate = _date.doCleaning('may'); 
-
+/*
+    let _dateclosed = elem.querySelector("div.result-info:nth-child(4)>span.result-content").textContent.trim().split(' ');
+    let newDate = _date.doCleaning(_dateclosed[1].slice(0,3).trim()); 
+    _dateclosed.splice(1,1,newDate[0].trim());
+    job.dateclosed_raw = _dateclosed[1] + '/' +_dateclosed[0]+ '/' + _dateclosed[2]; 
+*/
 console.log(newLocation)
 
 function _Date(codeDate, dateReal) {
