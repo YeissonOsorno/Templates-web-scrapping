@@ -87,14 +87,6 @@ function dummyJobs()
   return dummy;
 }
 
-/*DummyJobs*/
-function dummyJobs()
-{
-  const dummy = {
-    domain : "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=70ce018a-d4cc-437d-84b7-a2bd1bf8433a&ccId=19000101_000001&jobId="
-  }
-  return dummy;
-}
 
   //---------------------------------------------------pagination----------------------------------------------------
   (function() {

@@ -103,6 +103,14 @@
     dateJob= mm +'/'+dd+'/'+yyyy;
     return dateJob;
   }
+  /* Before Pagination */
+  (function() {
+    var out = {};
+      out.iframeSelector = "#icims_content_iframe"
+      out.iframeWaitFor = "h2.iCIMS_SubHeader.iCIMS_SubHeader_Jobs"
+      return out;
+  })();
+  
   /* Pagination */
   (function() {
     var out = {};

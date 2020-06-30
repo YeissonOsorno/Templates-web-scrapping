@@ -50,3 +50,12 @@ for(const a of full_html.querySelectorAll('input, javascript, script, style
         a.remove();//remueve el selector si coincide con la palabra clave.
       }
     }
+    /* Extraer experiencia y removerlo */     
+    for(const a of full_html.querySelectorAll('h2.iCIMS_InfoMsg.iCIMS_InfoField_Job')){
+      const text = a.textContent.trim();
+      if(text.search(/Minimum Years of Experience/i) > -1){
+        job.experience_required= a.nextElementSibling.textContent.trim();
+        //job.source_jobtype = job.source_jobtype.replace(/palabra/, '').trim();
+        a.remove();//remueve el selector si coincide con la palabra clave.
+      }
+    }
