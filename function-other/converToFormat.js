@@ -9,8 +9,6 @@ function converToFormat(date){
     var _date = new _Date(Object.keys(months),Object.values(months)); 
     var newDate = _date.doCleaning(dateInput[0].trim()); 
     dateOutput = dateInput[1].replace(',','').trim() + '/'+ newDate[0] + '/' + dateInput[2];
-    
-    var newDate = _date.doCleaning('may');
     function _Date(codeDate, dateReal) {
       this.codeDate = codeDate;
       this.dateReal = dateReal;
