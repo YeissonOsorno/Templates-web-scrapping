@@ -1,3 +1,4 @@
+<?php 
 $city = trim((string) $j->locationfreetext);
 //$country = trim((string) $j->country); //no se extrae country porque en todos es UK y hay jobs que no son de UK
     
@@ -21,4 +22,5 @@ $job['jobdesc'] = strip_tags($job["html"]);
 print_r($job); 
 $job['temp']=789;
 
+?>
 // Jobsite -- http://jobfeed.service.4matnetworks.com/api/indeed/v1/apikey/94B837CF-D858-4C54-B331-84F436E0D0E0/enviTypeId/1/siteid/249/
