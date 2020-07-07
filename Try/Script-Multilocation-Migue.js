@@ -6,7 +6,4 @@ for(var i = 0; i < array.length; i++) {
   jobx.location = array[i];
   jobx.temp = job.temp;
   jobs.push(jobx);
-
-
-
 }
