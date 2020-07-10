@@ -66,17 +66,12 @@
   var follow = true
   var json;
   do {
-  var data = {"multilineEnabled":false,"sortingSelection":{"sortBySelectionParam":"3","ascendingSortingOrder":"false"},"fieldData":{"fields":{"KEYWORD":"","LOCATION":""},"valid":true},"filterSelectionParam":{"searchFilterSelections":[{"id":"ORGANIZATION","selectedValues":[]},{"id":"LOCATION","selectedValues":[]},{"id":"JOB_FIELD","selectedValues":[]}]},"advancedSearchFiltersSelectionParam":{"searchFilterSelections":[{"id":"ORGANIZATION","selectedValues":[]},{"id":"LOCATION",
-    "selectedValues":[]},{"id":"JOB_FIELD","selectedValues":[]},
-    {"id":"JOB_NUMBER","selectedValues":[]},{"id":"URGENT_JOB",
-                                             "selectedValues":[]},
-                                             {"id":"EMPLOYEE_STATUS",
-                                              "selectedValues":[]},
-                                              {"id":"WILL_TRAVEL","selectedValues":[]},
-                                              {"id":"JOB_SHIFT","selectedValues":[]}]},"pageNo":count}
+  var data = {"multilineEnabled":false,"sortingSelection":{"sortBySelectionParam":"3","ascendingSortingOrder":"false"},"fieldData":{"fields":{"KEYWORD":"","LOCATION":""},"valid":true},"filterSelectionParam":{"searchFilterSelections":[{"id":"POSTING_DATE","selectedValues":[]},{"id":"LOCATION","selectedValues":[]},{"id":"JOB_FIELD","selectedValues":[]},{"id":"JOB_TYPE","selectedValues":[]},{"id":"JOB_SCHEDULE","selectedValues":[]},{"id":"JOB_LEVEL","selectedValues":[]}]},"advancedSearchFiltersSelectionParam":{"searchFilterSelections":[{"id":"ORGANIZATION","selectedValues":[]},{"id":"LOCATION","selectedValues":[]},{"id":"JOB_FIELD","selectedValues":[]},{"id":"JOB_NUMBER","selectedValues":[]},{"id":"URGENT_JOB","selectedValues":[]},
+  {"id":"EMPLOYEE_STATUS","selectedValues":[]},{"id":"STUDY_LEVEL","selectedValues":[]},
+  {"id":"WILL_TRAVEL","selectedValues":[]}]},"pageNo":count}
 
   $.ajax({
-    url: 'https://lifepoint.taleo.net/careersection/rest/jobboard/searchjobs?lang=en&portal=101430233',                                            // 1) url
+    url: 'https://abseagle.taleo.net/careersection/rest/jobboard/searchjobs?lang=en&portal=101430233&iniurl.src=LinkedIn',                                            // 1) url
     headers: {                                                      
      // "accept": "application/json, text/javascript, */*; q=0.01",
       "Content-Type":"application/json",
