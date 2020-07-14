@@ -160,6 +160,13 @@
       }  
     }
   }
+  /* Before Description */
+  (function() {
+    var out = {};
+    out.wait = true;
+    out.waitFor = 'div[id="wd-HBox-NO_METADATA_ID-uid3"] >div >div:first-child div[id="wd-PageContent-vbox"] >div >ul:nth-child(3)';
+    return out;
+  })();
   
   /* Description */
   (function() {

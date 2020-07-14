@@ -34,7 +34,9 @@
             }*/
  
         /////////// Respuesta en HTML de la descripcion de cada job //////////////
-  
+            /*  var full_html = getDescription(job.url); 
+                var div = document.createElement("div"); 
+                div.innerHTML = full_html;*/
  
             for(const a of div.querySelectorAll('')){
                     const text = a.textContent.trim();
