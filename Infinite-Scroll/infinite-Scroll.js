@@ -33,4 +33,3 @@
 
 
 
-  ' https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=77875817-8a31-481f-bbaa-e38a9bbe8414&ccId=19000101_000001&jobId='+ jobs[i].customFieldGroup.stringFields[0].stringValue;

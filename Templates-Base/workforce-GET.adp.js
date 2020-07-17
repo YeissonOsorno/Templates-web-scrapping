@@ -83,6 +83,7 @@ function dummyJobs()
 {
   const dummy = {
     domain : "https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=4ee6cf69-a7b8-4505-906d-f0077f07c536&ccId=19000101_000001&jobId="
+   
   }
   return dummy;
 }
