@@ -2,8 +2,7 @@
 // con su número incluído
 
 // ATS myworkdayjobs - Multi-location AJAX 
-
-var conf = {
+{
 "options": {
 "inactivateJQuery": false,
 "ignoreLoadErrors": false,
