@@ -7,7 +7,7 @@
     } else {
       out["pass_it"] = pass_it;
     }
-    var next_page_selector = 'a[data-page="'+out["pass_it"].cont+'"]'; // Selector del next  
+    var next_page_selector = 'a[aria-label="page '+out["pass_it"].cont+'"]'; // Selector del next  
     var clickable_elem = document.querySelector(next_page_selector);
   
     if (clickable_elem) {

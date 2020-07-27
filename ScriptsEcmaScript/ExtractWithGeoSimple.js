@@ -8,7 +8,7 @@
     ND: "North Dakota", OH: "Ohio", OK: "Oklahoma", OR: "Oregon", PA: "Pennsylvania", RI: "Rhode Island", SC: "South Carolina", SD: "South Dakota",
     TN: "Tennessee", TX: "Texas", UT: "Utah", VT: "Vermont", VA: "Virginia", WA: "Washington", WV: "West", WI: "Wisconsin", WY: "Wyoming",DC:"DC"
   }
-  const html_jobs = document.querySelectorAll('div[class="oracletaleocwsv2-accordion-head-info"]');
+  const html_jobs = document.querySelectorAll('div.jobs-section__item');
   const jobs = []; for (let x in html_jobs) {
     if (typeof html_jobs[x] == "function") continue;
     if (typeof html_jobs[x] == "number") continue;
@@ -16,12 +16,13 @@
     let geoUS = new Geo(Object.keys(countries), Object.values(countries));
 
     let elem = html_jobs[x];
-    job.title = elem.querySelector("a").textContent.trim();
-    job.url = elem.querySelector("a").href.trim();
-    let _location = elem.querySelector("div").textContent.trim().split('-');
-    let newLocation = geoUS.doCleaning(_location[0].trim());
-    _location.splice(0, 1, newLocation[0])
-    job.location = _location.reverse().join(', ').trim();
+    job.title = elem.querySelector("h2>a").textContent.trim();
+    job.url = elem.querySelector("h2>a").href.trim();
+    let _location = elem.querySelector('div[class="neu-text--caption neu-margin--bottom-10"]').innerText.trim().replace('United States','US').split(',');
+    
+    let newLocation = geoUS.doCleaning(_location[1].trim());
+    _location.splice(1, 1, newLocation[0]);    
+    job.location = _location.join(', ').trim();
 
     //job.dateposted_raw = elem.querySelector("").textContent.trim();
     //job.logo = elem.querySelector("").getAttribute("src").trim();
