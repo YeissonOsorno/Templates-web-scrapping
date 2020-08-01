@@ -1,26 +1,28 @@
-/*Before extract */
+/*
+* Taleo simple without JSON POST
+*/
+
+/* Config */
+{
+    "options": {
+        "inactivateJQuery": false,
+        "ignoreLoadErrors": false,
+        "waitForPageLoadEvent": false,
+        "waitForResources": false
+    },
+    "noimage": true,
+    "skipResources": false,
+    "noUnnecessaryResources": false
+}
+
+/* Before Extract */
 (function() {
 	var out = {};
     out.waitFor = 'div.ftllist tbody > tr[class="ftlcopy ftlrow"]';
     return out;
 })();
 
-/*Expected jobs */
-(function() {
-	var out = {};
-    var selector = 'span[id="requisitionListInterface.ID4925"]';
-  	var regex = /\d+/;
-  
-  	if (typeof msg === 'undefined') msg = console.log;
-
-	var expected_jobs_str = document.querySelector(selector).textContent.trim();
-  	var expected_jobs = regex.exec(expected_jobs_str)[0];
-	
-  	out["expected_jobs"] = expected_jobs;
-
-  	return out;
-})();
-/*Extract */
+/* Extract */
 (function () {
     var out = {};
     var dummy = dummyJobs();
@@ -32,7 +34,7 @@
         var elem = html_jobs[x];
         job.title = elem.querySelector("td:last-child div.editablesection h3 a").textContent.trim();
         job.title = dummy.cleanedTitle(job.title);
-        job.url = "https://west.taleo.net/careersection/jobdetail.ftl?job="+elem.querySelector('div.staticcontentlinepanel +div>span:last-child').textContent;
+        job.url = window.location.origin + "/careersection/jobdetail.ftl?job="+elem.querySelector('div.staticcontentlinepanel +div>span:last-child').textContent;
         job.location = dummy.cleanLocation(elem.querySelector(dummy.selectorLocation).textContent.trim());
         job.dateposted_raw = dummy.ifExists('span[id*="requisitionListInterface.reqPostingDate.row"]');
         job.temp = 1;
@@ -80,7 +82,8 @@
         },
         cleanLocation : (location)=>{
             var result = location.replace('United States', 'US').split('-').reverse().join(', ');
-            result = result.replace('Staff at Home ','').trim();
+            result = result.replace('Staff at Home ','')
+            if(result.indexOf('HQ')>-1) result = "Baltimore, Maryland,US"
             return result;
         },
         ifExists : (selector)=>{
@@ -94,7 +97,8 @@
     }
     return dummyValidation;
   }
-  /*Pagination*/
+  
+  /* Pagination */
   (function() {
     var out = {};
     var next_page_selector = 'span.pagerlink > a[title="Go to the next page"]'; //selector to identify the next button
@@ -115,5 +119,6 @@
     out.waitFor = 'div.ftllist tbody > tr[class="ftlcopy ftlrow"]';
     return out;
   })();
-  /*Job Description */
+  
+  /* Description */
   

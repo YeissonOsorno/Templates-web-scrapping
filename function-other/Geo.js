@@ -5,7 +5,7 @@ let countries = {
     MT: "Montana", NE: "Nebraska", NV: "Nevada", NH: "New Hampshire", NJ: "New Jersey", NM: "New Mexico", NY: "New York", NC: "North Carolina",
     ND: "North Dakota", OH: "Ohio, US", OK: "Oklahoma", OR: "Oregon", PA: "Pennsylvania", RI: "Rhode Island", SC: "South Carolina", SD: "South Dakota",
     TN: "Tennessee", TX: "Texas", UT: "Utah", VT: "Vermont", VA: "Virginia", WA: "Washington", WV: "West", WI: "Wisconsin", WY: "Wyoming",DC:"DC"
-  }
+}
 
 let geoUS = new Geo(Object.keys(countries),Object.values(countries)); 
 let newLocation = geoUS.doCleaning(_location[1].trim());

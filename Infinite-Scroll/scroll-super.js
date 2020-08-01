@@ -13,7 +13,7 @@
   var ref = document.querySelector('div[class="scroll"]'); /* Selector que contiene los jobs */
   var newEle = document.createElement('div');
   ref.appendChild(newEle);
-  newEle.stylea.height = '6000px' /* para darle altura a la pagina  */
+  newEle.style.height = '6000px' /* para darle altura a la pagina  */
   msg(pass_it);
   if(!pass_it["heights"])    out["pass_it"] = {"heights":[]};
   else                     out["pass_it"] = pass_it;
