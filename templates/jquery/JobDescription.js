@@ -17,7 +17,7 @@
     //if(html_2.toLowerCase().indexOf("full-time")>-1){job.source_jobtype = "Full-Time";}
   
     // job.location           = $("").text().trim();
-    job.source_jobtype     = $("li.det-level-2.clearfix:contains(Employee Type:)").text().split(":").pop().trim();
+    //job.source_jobtype     = $("li.det-level-2.clearfix:contains(Employee Type:)").text().split(":").pop().trim();
     // job.source_empname     = $("").text().trim();
     // job.logo               = $("").attr("src");
     // job.source_salary      = $("").text().trim();
@@ -52,7 +52,7 @@
   
     //full_html.find("h1").remove().end().html();
   
-    //full_html.find("p:contains()").remove().end().html();
+    full_html.find("p:contains(POSTING DATE:)").remove().end().html();
     //full_html.find("p:contains()").remove().end().html();
     //full_html.find("p:contains()").remove().end().html();
   

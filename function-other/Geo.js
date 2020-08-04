@@ -1,9 +1,9 @@
 let countries = {
-    AL: "Alabama, US", AK: "Alaska, US", AZ: "Arizona, US", AR: "Arkansas, US", CA: "California, US", CO: "Colorado, US", CT: "Connecticut", DE: "Delaware",
+    AL: "Alabama", AK: "Alaska, US", AZ: "Arizona", AR: "Arkansas", CA: "California", CO: "Colorado, US", CT: "Connecticut", DE: "Delaware",
     FL: "Florida", GA: "Georgia", HI: "Hawaii", ID: "Idaho", IL: "llinois", IN: "Indiana", IA: "Iowa", KS: "Kansas", KY: "entucky",
     LA: "Louisiana", ME: "Maine", MD: "Maryland", MA: "Massachusetts", MI: "Míchigan", MN: "Minnesota", MS: "Mississippi", MO: "Missouri",
     MT: "Montana", NE: "Nebraska", NV: "Nevada", NH: "New Hampshire", NJ: "New Jersey", NM: "New Mexico", NY: "New York", NC: "North Carolina",
-    ND: "North Dakota", OH: "Ohio, US", OK: "Oklahoma", OR: "Oregon", PA: "Pennsylvania", RI: "Rhode Island", SC: "South Carolina", SD: "South Dakota",
+    ND: "North Dakota", OH: "Ohio", OK: "Oklahoma", OR: "Oregon", PA: "Pennsylvania", RI: "Rhode Island", SC: "South Carolina", SD: "South Dakota",
     TN: "Tennessee", TX: "Texas", UT: "Utah", VT: "Vermont", VA: "Virginia", WA: "Washington", WV: "West", WI: "Wisconsin", WY: "Wyoming",DC:"DC"
 }
 
@@ -31,9 +31,7 @@ function Geo(countryCodesArr, countriesArr) {
         	if(arrayDoSearch[item] === targetValue){
         		console.log('\x1b[32m Find');
         		return item;
-        	}else{
-                return targetValue;
-            }
+        	}
         }  
     }
 }

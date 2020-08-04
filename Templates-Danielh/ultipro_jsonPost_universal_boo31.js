@@ -17,6 +17,31 @@ Nota: Si se extraen los jobs con el JSON debe extraerse el jobtype desde la desc
 job.source_jobtype     = $("span#JobFullTime").text().trim();
 
 */
+// Expected Jobs ----------------//
+(function () {
+  var jobs = [];
+  var out  = {};
+  var data = {"opportunitySearch":{"Top":50,"Skip": 0,"QueryString":"","OrderBy":[{"Value":"postedDateDesc","PropertyName":"PostedDate","Ascending":false}],"Filters":[{"t":"TermsSearchFilterDto","fieldName":4,"extra":null,"values":[]},{"t":"TermsSearchFilterDto","fieldName":5,"extra":null,"values":[]},{"t":"TermsSearchFilterDto","fieldName":6,"extra":null,"values":[]}]},"matchCriteria":{"PreferredJobs":[],"Educations":[],"LicenseAndCertifications":[],"Skills":[],"hasNoLicenses":false,"SkippedSkills":[]}};
+$.ajax({
+          url: window.location.protocol + "//" + window.location.hostname + window.location.pathname + "/JobBoardView/LoadSearchResults",                                            // 1) url
+          headers: {                                                      
+              "Accept": "application/json, text/javascript, */*; q=0.01",
+              "Content-Type":"application/json; charset=utf-8"              
+          },
+          type: 'POST',                                            
+          dataType: "json", 
+          data: JSON.stringify(data),
+          async: false,
+          success: function (result) {
+                 out["expected_jobs"] = result.totalCount;
+          },
+          error: function (error) {
+            msg(error);
+        }
+          
+      });   
+  return out;
+})();
 
 // Before extract ---------------//
 
@@ -24,110 +49,110 @@ job.source_jobtype     = $("span#JobFullTime").text().trim();
 // Extract -------------------------------------------------------------------------------------------------------------//
 
 (function () {
-    var jobs = [];
-    var out  = {};
-    var cont = 0;
-    var json;
- 
+  var jobs = [];
+  var out  = {};
+  var cont = 0;
+  var json;
 
-  
-  do {
 
-    var data = {"opportunitySearch":{"Top":50,"Skip": cont,"QueryString":"","OrderBy":[{"Value":"postedDateDesc","PropertyName":"PostedDate","Ascending":false}],"Filters":[{"t":"TermsSearchFilterDto","fieldName":4,"extra":null,"values":[]},{"t":"TermsSearchFilterDto","fieldName":5,"extra":null,"values":[]},{"t":"TermsSearchFilterDto","fieldName":6,"extra":null,"values":[]}]},"matchCriteria":{"PreferredJobs":[],"Educations":[],"LicenseAndCertifications":[],"Skills":[],"hasNoLicenses":false,"SkippedSkills":[]}};
 
-        $.ajax({
-            url: window.location.protocol + "//" + window.location.hostname + window.location.pathname + "/JobBoardView/LoadSearchResults",                                            // 1) url
-            headers: {                                                      
-                "Accept": "application/json, text/javascript, */*; q=0.01",
-                "Content-Type":"application/json; charset=utf-8"                // 2) headers
-            },
-            type: 'POST',                                               // 3) tipo
-            dataType: "json",                                           // 4) data que retorna
+do {
 
-            data: JSON.stringify(data),
-            async: false,
-            success: function (result) {
-                msg("SUCCES");
-                json  = result.opportunities; 
-                //ToKen = result.;                                      // 5) ruta de los trabajos
-        //msg(json.length);
-                for (var i = 0; i < json.length; i++) {
-                    var job = {};
+  var data = {"opportunitySearch":{"Top":50,"Skip": cont,"QueryString":"","OrderBy":[{"Value":"postedDateDesc","PropertyName":"PostedDate","Ascending":false}],"Filters":[{"t":"TermsSearchFilterDto","fieldName":4,"extra":null,"values":[]},{"t":"TermsSearchFilterDto","fieldName":5,"extra":null,"values":[]},{"t":"TermsSearchFilterDto","fieldName":6,"extra":null,"values":[]}]},"matchCriteria":{"PreferredJobs":[],"Educations":[],"LicenseAndCertifications":[],"Skills":[],"hasNoLicenses":false,"SkippedSkills":[]}};
 
-                  var dom = window.location.origin + window.location.pathname + "OpportunityDetail?opportunityId=";
+      $.ajax({
+          url: window.location.protocol + "//" + window.location.hostname + window.location.pathname + "/JobBoardView/LoadSearchResults",                                            // 1) url
+          headers: {                                                      
+              "Accept": "application/json, text/javascript, */*; q=0.01",
+              "Content-Type":"application/json; charset=utf-8"                // 2) headers
+          },
+          type: 'POST',                                               // 3) tipo
+          dataType: "json",                                           // 4) data que retorna
+
+          data: JSON.stringify(data),
+          async: false,
+          success: function (result) {
+              msg("SUCCES");
+              json  = result.opportunities; 
+              //ToKen = result.;                                      // 5) ruta de los trabajos
+      //msg(json.length);
+              for (var i = 0; i < json.length; i++) {
+                  var job = {};
+
+                var dom = window.location.origin + window.location.pathname + "OpportunityDetail?opportunityId=";
+                
+                  job.title    = json[i].Title;
+                  job.url      = dom + json[i].Id;
                   
-                    job.title    = json[i].Title;
-                    job.url      = dom + json[i].Id;
-                    
-                     //Location array "city, state, country"
+                   //Location array "city, state, country"
 
-                      var city    = json[i].Locations[0].Address.City;
-                      var state   = json[i].Locations[0].Address.State.Name;
-                      var country = json[i].Locations[0].Address.Country.Name;
+                    var city    = json[i].Locations[0].Address.City;
+                    var state   = json[i].Locations[0].Address.State.Name;
+                    var country = json[i].Locations[0].Address.Country.Name;
 
-                      var loc = "";
-                      var array_loc = Array();
+                    var loc = "";
+                    var array_loc = Array();
 
-                      if(city) array_loc.push(city);
-                      if(state) array_loc.push(state);
-                      if(country) array_loc.push(country);
+                    if(city) array_loc.push(city);
+                    if(state) array_loc.push(state);
+                    if(country) array_loc.push(country);
 
 
-                      if(array_loc.length) loc = array_loc.join(", ");
+                    if(array_loc.length) loc = array_loc.join(", ");
 
                     job.location = loc;
+                
                   
-                    
-                    /*----------DATE-POSTED-----------------------------*/
+                  /*----------DATE-POSTED-----------------------------*/
 
-                    var datum = json[i].PostedDate; // 2019-10-07T22:50:45.562Z
-                    
-                        datum = datum.split("T").shift().trim();
-                        datum = getDateFormat(datum,"-",2,1,0);
-
+                  var datum = json[i].PostedDate; // 2019-10-07T22:50:45.562Z
                   
-                   /*-------------------------------------------------*/
+                      datum = datum.split("T").shift().trim();
+                      datum = getDateFormat(datum,"-",2,1,0);
+                  job.dateposted_raw = datum;
+                
+                 /*-------------------------------------------------*/
 
-                    job.temp = "2020";
+                  job.temp = "2020";
 
-                    jobs.push(job);
-                }
-                cont += 50;
-            },
-            error: function (error) {
-                msg(error);
-            }
-        });
-    } while (json.length > 0);  // 6) condicion de parada
+                  jobs.push(job);
+              }
+              cont += 50;
+          },
+          error: function (error) {
+              msg(error);
+          }
+      });
+  } while (json.length > 0);  // 6) condicion de parada
 
-    out["jobs"] = jobs;
-    return out;
+  out["jobs"] = jobs;
+  return out;
 })();
 
 function getDateFormat(dateRaw, cut, dayPosition, monthPosition, yearPosition) {
-       dateRaw = dateRaw.replace(/\,/g,"").trim();
-          
-        let day   =  dateRaw.split(cut)[dayPosition].trim(), 
-            month =  dateRaw.split(cut)[monthPosition].trim(), 
-            year  = dateRaw.split(cut)[yearPosition].trim();
+     dateRaw = dateRaw.replace(/\,/g,"").trim();
+        
+      let day   =  dateRaw.split(cut)[dayPosition].trim(), 
+          month =  dateRaw.split(cut)[monthPosition].trim(), 
+          year  = dateRaw.split(cut)[yearPosition].trim();
 
-          if(dateRaw.search(/[a-z]/gi)>-1){ 
-            if(month.search(/jan/i)>-1){month = "01";}
-            if(month.search(/feb/i)>-1){month = "02";}
-            if(month.search(/mar/i)>-1){month = "03";}
-            if(month.search(/apr/i)>-1){month = "04";}
-            if(month.search(/may/i)>-1){month = "05";}
-            if(month.search(/jun/i)>-1){month = "06";}
-            if(month.search(/jul/i)>-1){month = "07";}
-            if(month.search(/aug/i)>-1){month = "08";}
-            if(month.search(/sep/i)>-1){month = "09";}
-            if(month.search(/oct/i)>-1){month = "10";}
-            if(month.search(/nov/i)>-1){month = "11";}
-            if(month.search(/dec/i)>-1){month = "12";}
-          }
-   var datum = month +"/"+  day +"/"+ year;
-     return datum;
-  }
+        if(dateRaw.search(/[a-z]/gi)>-1){ 
+          if(month.search(/jan/i)>-1){month = "01";}
+          if(month.search(/feb/i)>-1){month = "02";}
+          if(month.search(/mar/i)>-1){month = "03";}
+          if(month.search(/apr/i)>-1){month = "04";}
+          if(month.search(/may/i)>-1){month = "05";}
+          if(month.search(/jun/i)>-1){month = "06";}
+          if(month.search(/jul/i)>-1){month = "07";}
+          if(month.search(/aug/i)>-1){month = "08";}
+          if(month.search(/sep/i)>-1){month = "09";}
+          if(month.search(/oct/i)>-1){month = "10";}
+          if(month.search(/nov/i)>-1){month = "11";}
+          if(month.search(/dec/i)>-1){month = "12";}
+        }
+ var datum = month +"/"+  day +"/"+ year;
+   return datum;
+}
 // No pagination -----------//
 
 (function() {
