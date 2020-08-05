@@ -51,10 +51,10 @@ for(const a of full_html.querySelectorAll('input, javascript, script, style
       }
     }
     /* Extraer experiencia y removerlo */     
-    for(const a of full_html.querySelectorAll('p')){
+    for(const a of full_html.querySelectorAll('div')){
       const text = a.textContent.trim();
-      if(text.search(/Minimum Years of Experience/i) > -1){
-        job.experience_required= a.textContent.trim()
+      if(text.search(/Location/i) > -1){
+        a.remove()
         
       }
     }

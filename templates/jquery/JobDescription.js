@@ -52,7 +52,7 @@
   
     //full_html.find("h1").remove().end().html();
   
-    full_html.find("p:contains(POSTING DATE:)").remove().end().html();
+    full_html.find("p:contains(Location is)").remove().end().html();
     //full_html.find("p:contains()").remove().end().html();
     //full_html.find("p:contains()").remove().end().html();
   
