@@ -25,10 +25,13 @@
     var elem = html_jobs[x];
     job.title = elem.querySelector('h2[data-id="job-item"]').textContent.trim();
     job.url = elem.querySelector("a.careers-jobs-list-styles__link--3qpm9").href.trim();
-    job.location = elem.querySelector('span[data-ui="job-location"]').textContent.trim();
+    job.location = elem.querySelector('span[data-ui="job-location"]').textContent.trim().replace('United States','US');
     //job.source_jobtype = elem.querySelector('span[data-ui="job-type"]').textContent.trim();
-   	var dateposted= elem.querySelector('small[class="careers-jobs-list-styles__date--1CDxx"]').textContent.trim();
+    var dateposted= elem.querySelector('small[class="careers-jobs-list-styles__date--1CDxx"]').textContent.trim();
     job.dateposted_raw =dateAgo (dateposted, ' ', 1, 2)
+
+    let jobtype = elem.querySelector('span[data-ui="job-type"]');
+    if(jobtype) job.source_jobtype = elem.querySelector('span[data-ui="job-type"]').textContent.trim();
     //job.logo = elem.querySelector("").getAttribute("src").trim();
     //job.source_apply_email = elem.querySelector("").textContent.trim();
     //job.source_empname = elem.querySelector("").textContent.trim();

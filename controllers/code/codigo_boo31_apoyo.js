@@ -64,3 +64,35 @@ for(const a of document.querySelectorAll('div')){
   // valida si un elemento existe en el DOM 
   var check     = document.querySelector('selector_a_validar') != null;
   if(check){job.dateclosed = getDateFormat(document.querySelector('selector_a_extraer').textContent.trim()," ",0,1,2); }
+
+  //Limpia titulos
+    job.title = job.title.replace(/\(.*?\)/g, '').replace(/\[.*?\]/g, '').replace(/\<.*?\>/g, '').trim();
+    job.title = job.title.split("$").shift().trim();
+    job.title = job.title.replace(/[0-9]/g,'').trim();
+    let lastCharTitle = job.title.substr(job.title.length -1);
+    if(lastCharTitle === "-" || lastCharTitle === "," || lastCharTitle === "(" ){job.title = job.title.slice(0,-1).trim();}
+
+    job.title = job.title.replace(/part time/i,"").trim();
+    job.title = job.title.replace(/part-time/i,"").trim();
+    job.title = job.title.replace(/full time/i,"").trim();
+    job.title = job.title.replace(/full-time/i,"").trim();
+    job.title = job.title.replace("()","").trim();
+
+
+    // Funcion para validar si existe un selector
+    function check(selector){
+        if(document.querySelector(selector))
+            return true;
+        else
+            return false
+    }
+
+    //dsgd
+    function TimeoutCLick(){
+        setTimeout(function(){ 
+          var selector = 'button[class="uk-border-circle"]';
+          if(document.querySelector(selector)){
+            document.querySelector(selector).click();
+          }
+        }, 3000);
+      }
