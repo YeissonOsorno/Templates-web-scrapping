@@ -96,3 +96,18 @@ for(const a of document.querySelectorAll('div')){
           }
         }, 3000);
       }
+
+//Asignar headquarter
+if(job.location.indexOf(",")==-1 && job.location.indexOf("CH")==-1){    
+    var city    = job.location;
+    var country = 'Switzerland';
+
+    var loc = "";
+    var array_loc = Array();
+
+    if(city) array_loc.push(city);
+    if(country) array_loc.push(country);
+
+    if(array_loc.length) loc = array_loc.join(", ");
+    jobx.location = loc;
+  }
