@@ -1,6 +1,6 @@
 (function () {
     var out = {};
-    var html_jobs = document.querySelectorAll("table.jv-job-list.jv-search-list tr");
+    var html_jobs = document.querySelectorAll("table.jv-job-list.jv-search-list>tbody tr");
     var jobs = []; for (var x in html_jobs) {
         if (typeof html_jobs[x] == "function") continue;
         if (typeof html_jobs[x] == "number") continue;
@@ -8,7 +8,7 @@
         var elem = html_jobs[x];
         job.title = elem.querySelector("a").textContent.trim();
         job.url = elem.querySelector("a").href.trim();
-        job.location = elem.querySelector("td.jv-job-list-location").textContent.trim();
+        job.location = elem.querySelector("td.jv-job-list-location").innerText.trim();
         job.location = job.location.replace("SFO", "San Francisco");
         job.location = job.location.replace("West Coast", "Helena, MN");
         job.temp = 2;
@@ -21,12 +21,12 @@
             locations = locations.split('/').filter(elem => elem != "");
             locations = locations.join('-').replace(/\n/g, '').trim();
             locations = locations.split('--');
-            for (var location in locations) {
+            for (var location of locations) {                
                 if (location.indexOf(',-') > -1) {
                     let jobx = {};
                     jobx.title = job.title;
                     jobx.url = job.url;
-                    jobx.location = location;
+                    jobx.location = location.replace(',-',',');
                     jobx.temp = job.temp;
                     jobs.push(jobx);
                 }

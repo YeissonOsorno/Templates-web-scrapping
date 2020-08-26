@@ -22,3 +22,27 @@ function fixedLocation(city,state,country){
 
     return loc;  
 }  
+
+//Location by 2
+    
+function fixedLocation(city,state){
+
+    var city    = city;
+    var state    = state;
+
+    let loc = "";
+    let array_loc = Array();
+
+    if(city) {
+        city = city.toLowerCase().replace(/\b[a-z]/g, (letter)=> letter.toUpperCase());
+        array_loc.push(city);
+    }
+    if(state) {
+        state = state.toLowerCase().replace(/\b[a-z]/g, (letter) => letter.toUpperCase());
+        array_loc.push(state);
+    }        
+
+    if(array_loc.length) loc = array_loc.join(", ");
+
+    return loc;  
+}  

@@ -111,3 +111,10 @@ if(job.location.indexOf(",")==-1 && job.location.indexOf("CH")==-1){
     if(array_loc.length) loc = array_loc.join(", ");
     jobx.location = loc;
   }
+
+//Replace clean by
+job.html = job.html.replace(/<div>|<h1>|<h2>|<h3>|<h4>|<h5>|<h6>|<h7>/g,"<p>");
+job.html = job.html.replace(/<\/div>|<\/h1>|<\/h2>|<\/h3>|<\/h4>|<\/h5>|<\/h6>|<\/h7>/g,"</p>");
+
+//Split by viñet
+job.html = job.html.split(/*/g,"<br>*");
