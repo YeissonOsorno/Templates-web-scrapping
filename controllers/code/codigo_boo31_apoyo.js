@@ -117,4 +117,10 @@ job.html = job.html.replace(/<div>|<h1>|<h2>|<h3>|<h4>|<h5>|<h6>|<h7>/g,"<p>");
 job.html = job.html.replace(/<\/div>|<\/h1>|<\/h2>|<\/h3>|<\/h4>|<\/h5>|<\/h6>|<\/h7>/g,"</p>");
 
 //Split by viñet
-job.html = job.html.split(/*/g,"<br>*");
+job.html = job.html.split(/[]/g,"<br>*");
+
+
+//Inject jquery
+var script = document.createElement('script');
+script.src = "https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js";
+document.getElementsByTagName('head')[0].appendChild(script);
