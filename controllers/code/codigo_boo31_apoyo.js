@@ -1,5 +1,7 @@
 // Replace (),[],<> in location
 job.location = job.location.replace(/\(.*?\)/g, '').replace(/\[.*?\]/g, '').replace(/\<.*?\>/g, '').trim();
+job.title = job.title.replace(/\(.*?\)/g, '').replace(/\[.*?\]/g, '').replace(/\<.*?\>/g, '').split('-'),shift().replace(/[0-9]/g,'').trim();
+job.title = job.title.replace(/\(.*?\)/g, '').replace(/\[.*?\]/g, '').replace(/\<.*?\>/g, '').replace(/[0-9]/g,'').trim();
 
 //Reemplazar locacion del titulo
 if(job.location.indexOf(",")>-1){
