@@ -3,7 +3,7 @@
 var out = {};
 var job = {};
 
-var selector = 'div.job_description';
+var selector = 'selector_description';
 
 var remove_selectors = ['a','input','div.alert','img', 'button',
                         'script','style'
@@ -78,8 +78,8 @@ if (typeof msg == "undefined") msg = console.log;
    
 job.html    = full_html.innerHTML.trim();
 
-job.html = removeTextBefore(job.html, "Job Description", false);
-   job.html = removeTextAfter(job.html, "To see all career opportunities", true);
+  job.html = removeTextBefore(job.html, "text_to_remove_Before", false);
+  job.html = removeTextAfter(job.html, "text_to_remove_after", true);
   //job.html = removeTextBefore(job.html, "", false);
   //job.html = removeTextBefore(job.html, "", false);
   //job.html = removeTextBefore(job.html, "", false);

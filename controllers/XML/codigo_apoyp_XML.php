@@ -649,3 +649,23 @@ $location = trim(str_replace(', ,','',$location));
 //echo "New Location: ".$location." Length: ".strlen($location)."\n";
 
 ///////////////////////////
+
+    if(strpos(strtoupper($city), "ALL CITIES")!==false){
+        $array_locs = array("Alberta","Ontario","Montreal");
+        foreach($array_locs as $location){
+        $jobx=array();
+        $jobx['temp']=$job['temp'];
+        $jobx['title'] = $job['title'];
+        $jobx['html'] = $job['html'];
+        $jobx['jobdesc'] = $job['jobdesc'];
+        $jobx['location'] = $location;
+        $jobx['source_jobtype'] = $job['source_jobtype'];
+        $jobx['url'] = $job['url'];
+        $jobx['source_empname'] = $job['source_empname'];
+        $jobx['dateposted_raw'] = $job['dateposted_raw'];
+        $jobx['source_salary'] =  $job['source_salary'];
+        $multi_jobs[] = $jobx;
+        }
+    }else{
+        $multi_jobs[] = $job;
+    }
