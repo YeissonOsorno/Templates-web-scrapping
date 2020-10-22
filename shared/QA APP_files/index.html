@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<!-- saved from url=(0104)http://boo1.neuvoo.com/boo3-web/qa/jobsdb/index.php?s=1&bc=&fc=&query=flag_active:1%20AND%20scanid:76654 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="“UTF-8”">
+	<title>JobsDB</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Keep this orden of stylesheets to avoid problem with some classes -->
+	<link rel="stylesheet" href="./bootstrap.min(1).css">
+	<link rel="stylesheet" href="./style-aux.css">
+	<link rel="stylesheet" href="./jobsdb-style.css">
+</head>
+
+<body style="">
+	<!-- NAV BAR INPUT SEARCH -->
+
+	<div id="stripes" class="stripes-jobsdb" style=" display: none;">
+		<span id="stripe-1"></span>
+		<span id="stripe-2"></span>
+		<span id="stripe-3"></span>
+		<span id="stripe-4"></span>
+		<span id="stripe-5"></span>
+	</div>
+
+	<nav style=" display: none;">
+		<section class="left-section">
+			<img onclick="window.location = &#39;./&#39;" src="./neuvoo_white.png" id="logo-neuvoo">
+		</section>
+
+		<section class="middle-section">
+		</section>
+
+		<section class="right-section">
+		</section>
+	</nav>
+
+	<div class="boxes-parent-1">
+		<!-- <p class="title-text" style=" display: none;">Elastic
+		Search</p> -->
+		<div class="query-section-1">
+			<div class="query">
+				<input id="query-input" type="text" name="query-search" autocomplete="off" placeholder="Query" value="flag_active:1 AND scanid:76654">
+				<button class="icon-box" style=" background: #00b2F3 ;
+				 color:white" onclick="redirect()">
+					<span class="glyphicon glyphicon-search icon-in-box"></span>
+				</button>
+				<!-- <button class="icon-box" onclick="copy_clipboard()">
+					<span class="glyphicon glyphicon-copy icon-in-box"></span>
+				</button> -->
+				<div class="show-columns">
+					<button id="columns-button" class="columns-list" style="
+					 background: #00b2F3 ; color:white" onclick="show_columns()">
+						Show columns
+						<!-- <span class="glyphicon glyphicon-menu-down"></span> -->
+					</button>
+					<div id="columns-panel" class="selection-panel">
+						<div id="check_agence" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>agence</div><div id="check_application_rules_id" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>application_rules_id</div><div id="check_apply_api_endpoint" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>apply_api_endpoint</div><div id="check_apply_api_key" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>apply_api_key</div><div id="check_apply_api_labels" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>apply_api_labels</div><div id="check_apply_client_jobid" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>apply_client_jobid</div><div id="check_apply_email" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>apply_email</div><div id="check_apply_extra_info" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>apply_extra_info</div><div id="check_apply_html_email" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>apply_html_email</div><div id="check_apply_shared" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>apply_shared</div><div id="check_apply_type" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>apply_type</div><div id="check_autoapply_attempts" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>autoapply_attempts</div><div id="check_autoapply_error" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>autoapply_error</div><div id="check_autoapply_error_text" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>autoapply_error_text</div><div id="check_autoapply_labels" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>autoapply_labels</div><div id="check_autoapply_status" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>autoapply_status</div><div id="check_aux" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>aux</div><div id="check_avg-range" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>avg-range</div><div id="check_boo_version" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>boo_version</div><div id="check_budget_spent" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>budget_spent</div><div id="check_campaign_id" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>campaign_id</div><div id="check_campaign_priority" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>campaign_priority</div><div id="check_campaign_tag" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>campaign_tag</div><div id="check_campaign_type" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>campaign_type</div><div id="check_category" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>category</div><div id="check_certification-panel" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>certification-panel</div><div id="check_check_job_date" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>check_job_date</div><div id="check_client_jobid" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>client_jobid</div><div id="check_client_tag" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>client_tag</div><div id="check_cluster" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-check checked"></span>cluster</div><div id="check_company_type" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>company_type</div><div id="check_company_type_numeric" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>company_type_numeric</div><div id="check_content" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>content</div><div id="check_country" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>country</div><div id="check_cpa" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>cpa</div><div id="check_cpa_float" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>cpa_float</div><div id="check_crawlgroup" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>crawlgroup</div><div id="check_crunchbase_uuid" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>crunchbase_uuid</div><div id="check_currency" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>currency</div><div id="check_currenturl" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>currenturl</div><div id="check_data_groupid" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>data_groupid</div><div id="check_data_inserted" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>data_inserted</div><div id="check_data_random" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>data_random</div><div id="check_date" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>date</div><div id="check_dateclosed" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>dateclosed</div><div id="check_dateclosed_raw" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>dateclosed_raw</div><div id="check_datefound" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>datefound</div><div id="check_dateout" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>dateout</div><div id="check_dateposted" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>dateposted</div><div id="check_dateposted_raw" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>dateposted_raw</div><div id="check_dateshow" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>dateshow</div><div id="check_description" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>description</div><div id="check_education-panel" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>education-panel</div><div id="check_email_apply_ai" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>email_apply_ai</div><div id="check_emailto" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>emailto</div><div id="check_empcode" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>empcode</div><div id="check_empdescription" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>empdescription</div><div id="check_empname" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-check checked"></span>empname</div><div id="check_experience_required" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>experience_required</div><div id="check_experience_required_max" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>experience_required_max</div><div id="check_experience_required_min" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>experience_required_min</div><div id="check_experience_required_snippet" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>experience_required_snippet</div><div id="check_experience_required_valid" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>experience_required_valid</div><div id="check_extra_info" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>extra_info</div><div id="check_fast_apply" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>fast_apply</div><div id="check_feed_type" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>feed_type</div><div id="check_filled" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>filled</div><div id="check_filter" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>filter</div><div id="check_flag_active" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-check checked"></span>flag_active</div><div id="check_flag_geolocation" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>flag_geolocation</div><div id="check_flag_geolocation_status" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>flag_geolocation_status</div><div id="check_flag_has_html" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>flag_has_html</div><div id="check_flag_html" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-check checked"></span>flag_html</div><div id="check_flag_html_error" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>flag_html_error</div><div id="check_flag_html_retry" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>flag_html_retry</div><div id="check_flag_jobdesc" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>flag_jobdesc</div><div id="check_flag_jobdesc_status" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>flag_jobdesc_status</div><div id="check_flag_jobtype_normalized" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>flag_jobtype_normalized</div><div id="check_flag_language_detection" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>flag_language_detection</div><div id="check_flag_postprocess" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>flag_postprocess</div><div id="check_flag_snap" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>flag_snap</div><div id="check_geo" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-check checked"></span>geo</div><div id="check_geo_city" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>geo_city</div><div id="check_geo_country" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>geo_country</div><div id="check_geo_country_filter" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>geo_country_filter</div><div id="check_geo_country_indexation" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>geo_country_indexation</div><div id="check_geo_latlon" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>geo_latlon</div><div id="check_geo_latlon_0_geo_coordinate" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>geo_latlon_0_geo_coordinate</div><div id="check_geo_latlon_1_geo_coordinate" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>geo_latlon_1_geo_coordinate</div><div id="check_geo_region1" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>geo_region1</div><div id="check_geo_region2" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>geo_region2</div><div id="check_geo_source" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>geo_source</div><div id="check_geo_work_from_home" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>geo_work_from_home</div><div id="check_google_error" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>google_error</div><div id="check_google_indexed" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>google_indexed</div><div id="check_html" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>html</div><div id="check_html9" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>html9</div><div id="check_id" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>id</div><div id="check_idtmp" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>idtmp</div><div id="check_is_ats" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>is_ats</div><div id="check_is_autoapply" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>is_autoapply</div><div id="check_is_crunchabase" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>is_crunchabase</div><div id="check_is_crunchbase" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>is_crunchbase</div><div id="check_is_gl" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>is_gl</div><div id="check_is_ppc" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>is_ppc</div><div id="check_is_sandbox" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>is_sandbox</div><div id="check_job_budget" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>job_budget</div><div id="check_job_date" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>job_date</div><div id="check_job_pixel" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>job_pixel</div><div id="check_job_pixel_additional" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>job_pixel_additional</div><div id="check_job_temp" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>job_temp</div><div id="check_jobdata_postprocess" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>jobdata_postprocess</div><div id="check_jobdesc" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>jobdesc</div><div id="check_jobdesc_len" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>jobdesc_len</div><div id="check_jobemail" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>jobemail</div><div id="check_jobhtmlid" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>jobhtmlid</div><div id="check_jobid" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>jobid</div><div id="check_jobtype" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>jobtype</div><div id="check_language" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>language</div><div id="check_last_qa_review" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>last_qa_review</div><div id="check_lead_type" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>lead_type</div><div id="check_link" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-check checked"></span>link</div><div id="check_linkedin_empcode" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>linkedin_empcode</div><div id="check_linkedin_empname" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>linkedin_empname</div><div id="check_linkedin_id" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>linkedin_id</div><div id="check_location" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-check checked"></span>location</div><div id="check_logo" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>logo</div><div id="check_max-range" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>max-range</div><div id="check_min-range" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>min-range</div><div id="check_monster-adid" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>monster-adid</div><div id="check_multilocation" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>multilocation</div><div id="check_neuvoo-ppc-id" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>neuvoo-ppc-id</div><div id="check_nwjob" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>nwjob</div><div id="check_ocation" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>ocation</div><div id="check_onet_cluster" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>onet_cluster</div><div id="check_onet_group" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>onet_group</div><div id="check_onet_occupation" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>onet_occupation</div><div id="check_onet_soc" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>onet_soc</div><div id="check_onet_title" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>onet_title</div><div id="check_postit_account" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>postit_account</div><div id="check_postit_ip" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>postit_ip</div><div id="check_postit_ip_mask" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>postit_ip_mask</div><div id="check_ppc" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>ppc</div><div id="check_ppc_discount" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>ppc_discount</div><div id="check_ppc_discount " class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>ppc_discount </div><div id="check_ppc_u" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>ppc_u</div><div id="check_ppc_u_discount" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>ppc_u_discount</div><div id="check_prueba" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>prueba</div><div id="check_quality_city" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>quality_city</div><div id="check_quality_country" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>quality_country</div><div id="check_quality_loc_version" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>quality_loc_version</div><div id="check_quality_location" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>quality_location</div><div id="check_quality_state" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>quality_state</div><div id="check_rank" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>rank</div><div id="check_region" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>region</div><div id="check_remote_id" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>remote_id</div><div id="check_replace" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>replace</div><div id="check_req" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>req</div><div id="check_reqid" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>reqid</div><div id="check_salary" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>salary</div><div id="check_salary-panel" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>salary-panel</div><div id="check_salary_avg" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>salary_avg</div><div id="check_salary_currency" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>salary_currency</div><div id="check_salary_match" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>salary_match</div><div id="check_salary_max" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>salary_max</div><div id="check_salary_min" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>salary_min</div><div id="check_salary_monthly" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>salary_monthly</div><div id="check_salary_snippet" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>salary_snippet</div><div id="check_salary_str" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>salary_str</div><div id="check_salary_type" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>salary_type</div><div id="check_salary_valid" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>salary_valid</div><div id="check_salary_yearly" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>salary_yearly</div><div id="check_scanid" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-check checked"></span>scanid</div><div id="check_send_ping" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>send_ping</div><div id="check_show_salary_on_front" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>show_salary_on_front</div><div id="check_sitecode" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>sitecode</div><div id="check_skills-panel" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>skills-panel</div><div id="check_snippet" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>snippet</div><div id="check_soc_broad_group" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>soc_broad_group</div><div id="check_soc_card_id" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>soc_card_id</div><div id="check_soc_classifier" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>soc_classifier</div><div id="check_soc_detailed_group" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>soc_detailed_group</div><div id="check_soc_detected_language" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>soc_detected_language</div><div id="check_soc_job_zone" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>soc_job_zone</div><div id="check_soc_major_group" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>soc_major_group</div><div id="check_soc_matched_title" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>soc_matched_title</div><div id="check_soc_minor_group" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>soc_minor_group</div><div id="check_soc_occupation_title" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>soc_occupation_title</div><div id="check_soc_onetsoc_code" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>soc_onetsoc_code</div><div id="check_soc_top_desc_score" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>soc_top_desc_score</div><div id="check_soc_top_title_score" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>soc_top_title_score</div><div id="check_source" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>source</div><div id="check_source_apply_email" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>source_apply_email</div><div id="check_source_appply_email" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>source_appply_email</div><div id="check_source_city" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>source_city</div><div id="check_source_country" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>source_country</div><div id="check_source_empcode" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>source_empcode</div><div id="check_source_empname" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>source_empname</div><div id="check_source_empnameprev" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>source_empnameprev</div><div id="check_source_jobtype" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>source_jobtype</div><div id="check_source_jobtype_normalized" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>source_jobtype_normalized</div><div id="check_source_name" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>source_name</div><div id="check_source_ppc" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>source_ppc</div><div id="check_source_salary" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>source_salary</div><div id="check_source_salary_currency" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>source_salary_currency</div><div id="check_source_salary_str" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>source_salary_str</div><div id="check_source_salary_type" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>source_salary_type</div><div id="check_source_state" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>source_state</div><div id="check_spider_name" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>spider_name</div><div id="check_spider_postprocess" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>spider_postprocess</div><div id="check_split" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>split</div><div id="check_state" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>state</div><div id="check_stc_id" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>stc_id</div><div id="check_strategy" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>strategy</div><div id="check_street_geopoint" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>street_geopoint</div><div id="check_street_lat" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>street_lat</div><div id="check_street_latlon" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>street_latlon</div><div id="check_street_location" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>street_location</div><div id="check_street_lon" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>street_lon</div><div id="check_string" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>string</div><div id="check_tag" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>tag</div><div id="check_talent_ppc" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>talent_ppc</div><div id="check_talent_ppc_u" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>talent_ppc_u</div><div id="check_title" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-check checked"></span>title</div><div id="check_title_word_count" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>title_word_count</div><div id="check_tracker_enabled" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>tracker_enabled</div><div id="check_type" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>type</div><div id="check_url_id" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>url_id</div><div id="check_urlid" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>urlid</div><div id="check_user_views" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>user_views</div><div id="check_valid" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>valid</div><div id="check_validate" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>validate</div><div id="check_work-exp-panel" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>work-exp-panel</div><div id="check_yearly_salary" class="selection-panel-row"><span onclick="select(this)" class="glyphicon glyphicon-unchecked" aria-hidden="true"></span>yearly_salary</div>					</div>
+				</div>
+			</div>
+			<div class="filter">
+				<input id="filter-input" type="text" name="filter-search" autocomplete="off" placeholder="Filter" onchange="filter_rows(this.value)">
+				<div>
+					<select class="columns-list" style=" background: #00b2F3 ;
+					 color:white" name="Filters" onchange="get_filters(this)">
+						<option id="check_none" disabled="" selected="">Filter By</option><option id="check_agence">agence</option><option id="check_application_rules_id">application_rules_id</option><option id="check_apply_api_endpoint">apply_api_endpoint</option><option id="check_apply_api_key">apply_api_key</option><option id="check_apply_api_labels">apply_api_labels</option><option id="check_apply_client_jobid">apply_client_jobid</option><option id="check_apply_email">apply_email</option><option id="check_apply_extra_info">apply_extra_info</option><option id="check_apply_html_email">apply_html_email</option><option id="check_apply_shared">apply_shared</option><option id="check_apply_type">apply_type</option><option id="check_autoapply_attempts">autoapply_attempts</option><option id="check_autoapply_error">autoapply_error</option><option id="check_autoapply_error_text">autoapply_error_text</option><option id="check_autoapply_labels">autoapply_labels</option><option id="check_autoapply_status">autoapply_status</option><option id="check_aux">aux</option><option id="check_avg-range">avg-range</option><option id="check_boo_version">boo_version</option><option id="check_budget_spent">budget_spent</option><option id="check_campaign_id">campaign_id</option><option id="check_campaign_priority">campaign_priority</option><option id="check_campaign_tag">campaign_tag</option><option id="check_campaign_type">campaign_type</option><option id="check_category">category</option><option id="check_certification-panel">certification-panel</option><option id="check_check_job_date">check_job_date</option><option id="check_client_jobid">client_jobid</option><option id="check_client_tag">client_tag</option><option id="check_cluster">cluster</option><option id="check_company_type">company_type</option><option id="check_company_type_numeric">company_type_numeric</option><option id="check_content">content</option><option id="check_country">country</option><option id="check_cpa">cpa</option><option id="check_cpa_float">cpa_float</option><option id="check_crawlgroup">crawlgroup</option><option id="check_crunchbase_uuid">crunchbase_uuid</option><option id="check_currency">currency</option><option id="check_currenturl">currenturl</option><option id="check_data_groupid">data_groupid</option><option id="check_data_inserted">data_inserted</option><option id="check_data_random">data_random</option><option id="check_date">date</option><option id="check_dateclosed">dateclosed</option><option id="check_dateclosed_raw">dateclosed_raw</option><option id="check_datefound">datefound</option><option id="check_dateout">dateout</option><option id="check_dateposted">dateposted</option><option id="check_dateposted_raw">dateposted_raw</option><option id="check_dateshow">dateshow</option><option id="check_description">description</option><option id="check_education-panel">education-panel</option><option id="check_email_apply_ai">email_apply_ai</option><option id="check_emailto">emailto</option><option id="check_empcode">empcode</option><option id="check_empdescription">empdescription</option><option id="check_empname">empname</option><option id="check_experience_required">experience_required</option><option id="check_experience_required_max">experience_required_max</option><option id="check_experience_required_min">experience_required_min</option><option id="check_experience_required_snippet">experience_required_snippet</option><option id="check_experience_required_valid">experience_required_valid</option><option id="check_extra_info">extra_info</option><option id="check_fast_apply">fast_apply</option><option id="check_feed_type">feed_type</option><option id="check_filled">filled</option><option id="check_filter">filter</option><option id="check_flag_active">flag_active</option><option id="check_flag_geolocation">flag_geolocation</option><option id="check_flag_geolocation_status">flag_geolocation_status</option><option id="check_flag_has_html">flag_has_html</option><option id="check_flag_html">flag_html</option><option id="check_flag_html_error">flag_html_error</option><option id="check_flag_html_retry">flag_html_retry</option><option id="check_flag_jobdesc">flag_jobdesc</option><option id="check_flag_jobdesc_status">flag_jobdesc_status</option><option id="check_flag_jobtype_normalized">flag_jobtype_normalized</option><option id="check_flag_language_detection">flag_language_detection</option><option id="check_flag_postprocess">flag_postprocess</option><option id="check_flag_snap">flag_snap</option><option id="check_geo">geo</option><option id="check_geo_city">geo_city</option><option id="check_geo_country">geo_country</option><option id="check_geo_country_filter">geo_country_filter</option><option id="check_geo_country_indexation">geo_country_indexation</option><option id="check_geo_latlon">geo_latlon</option><option id="check_geo_latlon_0_geo_coordinate">geo_latlon_0_geo_coordinate</option><option id="check_geo_latlon_1_geo_coordinate">geo_latlon_1_geo_coordinate</option><option id="check_geo_region1">geo_region1</option><option id="check_geo_region2">geo_region2</option><option id="check_geo_source">geo_source</option><option id="check_geo_work_from_home">geo_work_from_home</option><option id="check_google_error">google_error</option><option id="check_google_indexed">google_indexed</option><option id="check_html">html</option><option id="check_html9">html9</option><option id="check_id">id</option><option id="check_idtmp">idtmp</option><option id="check_is_ats">is_ats</option><option id="check_is_autoapply">is_autoapply</option><option id="check_is_crunchabase">is_crunchabase</option><option id="check_is_crunchbase">is_crunchbase</option><option id="check_is_gl">is_gl</option><option id="check_is_ppc">is_ppc</option><option id="check_is_sandbox">is_sandbox</option><option id="check_job_budget">job_budget</option><option id="check_job_date">job_date</option><option id="check_job_pixel">job_pixel</option><option id="check_job_pixel_additional">job_pixel_additional</option><option id="check_job_temp">job_temp</option><option id="check_jobdata_postprocess">jobdata_postprocess</option><option id="check_jobdesc">jobdesc</option><option id="check_jobdesc_len">jobdesc_len</option><option id="check_jobemail">jobemail</option><option id="check_jobhtmlid">jobhtmlid</option><option id="check_jobid">jobid</option><option id="check_jobtype">jobtype</option><option id="check_language">language</option><option id="check_last_qa_review">last_qa_review</option><option id="check_lead_type">lead_type</option><option id="check_link">link</option><option id="check_linkedin_empcode">linkedin_empcode</option><option id="check_linkedin_empname">linkedin_empname</option><option id="check_linkedin_id">linkedin_id</option><option id="check_location">location</option><option id="check_logo">logo</option><option id="check_max-range">max-range</option><option id="check_min-range">min-range</option><option id="check_monster-adid">monster-adid</option><option id="check_multilocation">multilocation</option><option id="check_neuvoo-ppc-id">neuvoo-ppc-id</option><option id="check_nwjob">nwjob</option><option id="check_ocation">ocation</option><option id="check_onet_cluster">onet_cluster</option><option id="check_onet_group">onet_group</option><option id="check_onet_occupation">onet_occupation</option><option id="check_onet_soc">onet_soc</option><option id="check_onet_title">onet_title</option><option id="check_postit_account">postit_account</option><option id="check_postit_ip">postit_ip</option><option id="check_postit_ip_mask">postit_ip_mask</option><option id="check_ppc">ppc</option><option id="check_ppc_discount">ppc_discount</option><option id="check_ppc_discount ">ppc_discount </option><option id="check_ppc_u">ppc_u</option><option id="check_ppc_u_discount">ppc_u_discount</option><option id="check_prueba">prueba</option><option id="check_quality_city">quality_city</option><option id="check_quality_country">quality_country</option><option id="check_quality_loc_version">quality_loc_version</option><option id="check_quality_location">quality_location</option><option id="check_quality_state">quality_state</option><option id="check_rank">rank</option><option id="check_region">region</option><option id="check_remote_id">remote_id</option><option id="check_replace">replace</option><option id="check_req">req</option><option id="check_reqid">reqid</option><option id="check_salary">salary</option><option id="check_salary-panel">salary-panel</option><option id="check_salary_avg">salary_avg</option><option id="check_salary_currency">salary_currency</option><option id="check_salary_match">salary_match</option><option id="check_salary_max">salary_max</option><option id="check_salary_min">salary_min</option><option id="check_salary_monthly">salary_monthly</option><option id="check_salary_snippet">salary_snippet</option><option id="check_salary_str">salary_str</option><option id="check_salary_type">salary_type</option><option id="check_salary_valid">salary_valid</option><option id="check_salary_yearly">salary_yearly</option><option id="check_scanid">scanid</option><option id="check_send_ping">send_ping</option><option id="check_show_salary_on_front">show_salary_on_front</option><option id="check_sitecode">sitecode</option><option id="check_skills-panel">skills-panel</option><option id="check_snippet">snippet</option><option id="check_soc_broad_group">soc_broad_group</option><option id="check_soc_card_id">soc_card_id</option><option id="check_soc_classifier">soc_classifier</option><option id="check_soc_detailed_group">soc_detailed_group</option><option id="check_soc_detected_language">soc_detected_language</option><option id="check_soc_job_zone">soc_job_zone</option><option id="check_soc_major_group">soc_major_group</option><option id="check_soc_matched_title">soc_matched_title</option><option id="check_soc_minor_group">soc_minor_group</option><option id="check_soc_occupation_title">soc_occupation_title</option><option id="check_soc_onetsoc_code">soc_onetsoc_code</option><option id="check_soc_top_desc_score">soc_top_desc_score</option><option id="check_soc_top_title_score">soc_top_title_score</option><option id="check_source">source</option><option id="check_source_apply_email">source_apply_email</option><option id="check_source_appply_email">source_appply_email</option><option id="check_source_city">source_city</option><option id="check_source_country">source_country</option><option id="check_source_empcode">source_empcode</option><option id="check_source_empname">source_empname</option><option id="check_source_empnameprev">source_empnameprev</option><option id="check_source_jobtype">source_jobtype</option><option id="check_source_jobtype_normalized">source_jobtype_normalized</option><option id="check_source_name">source_name</option><option id="check_source_ppc">source_ppc</option><option id="check_source_salary">source_salary</option><option id="check_source_salary_currency">source_salary_currency</option><option id="check_source_salary_str">source_salary_str</option><option id="check_source_salary_type">source_salary_type</option><option id="check_source_state">source_state</option><option id="check_spider_name">spider_name</option><option id="check_spider_postprocess">spider_postprocess</option><option id="check_split">split</option><option id="check_state">state</option><option id="check_stc_id">stc_id</option><option id="check_strategy">strategy</option><option id="check_street_geopoint">street_geopoint</option><option id="check_street_lat">street_lat</option><option id="check_street_latlon">street_latlon</option><option id="check_street_location">street_location</option><option id="check_street_lon">street_lon</option><option id="check_string">string</option><option id="check_tag">tag</option><option id="check_talent_ppc">talent_ppc</option><option id="check_talent_ppc_u">talent_ppc_u</option><option id="check_title">title</option><option id="check_title_word_count">title_word_count</option><option id="check_tracker_enabled">tracker_enabled</option><option id="check_type">type</option><option id="check_url_id">url_id</option><option id="check_urlid">urlid</option><option id="check_user_views">user_views</option><option id="check_valid">valid</option><option id="check_validate">validate</option><option id="check_work-exp-panel">work-exp-panel</option><option id="check_yearly_salary">yearly_salary</option>					</select>
+				</div>
+			</div>
+		</div>
+		<img class="t-bottom" src="./triangle-white-bottom.png" style=" display: none;">
+	</div>
+	
+
+	<main class=" main-1">
+		<div class="results-section">
+			<div class="results-nav">
+				<div class="nav nav-pills">
+					<div class="jobs-title" onclick="redirect()" style=" background: #00b2F3 ;
+					 color:white"><a>Jobs</a></div>
+					<div class="emp-log-title" onclick="redirect(&#39;&#39;, mode=&#39;logos&#39;)"><a class="">Logos
+							and Empnames</a></div>
+				</div>
+				<div class="results-number">
+					0 results				</div>
+			</div>
+			
+				<div id="jobs-table" class="table">
+					</div>				</div>
+						<div class="pagination-section"><span><img class="page-unavailable" src="./page-pprev-16.png" "=""></span><span><img class="page-unavailable" style="opacity: 0.5;" src="./page-prev-16.png"></span><div class="pagination-num"></div><span><img class="page-unavailable" src="./page-next-16.png"></span></div>
+	</main>
+
+	<script src="./jquery.min.js"></script>
+	<script>
+		document.getElementById("query-input")
+			.addEventListener("keyup", function(event) {
+				event.preventDefault();
+				if (event.keyCode === 13) {
+					redirect();
+				} else if (event.keyCode == 222) {
+					var str = event.srcElement.value;
+					if (str.substr(-2) == "\\\"") {
+						const str_size = document.getElementById("query-input").value.length;
+						document.getElementById("query-input").value += "\\\"";
+						setCaretPosition("query-input", str_size);
+					} else if (str.substr(-1) == "\"") {
+						const str_size = document.getElementById("query-input").value.length;
+						document.getElementById("query-input").value += "\"";
+						setCaretPosition("query-input", str_size);
+					}
+				}
+			});
+
+		function check_logo(empname, empcode) {
+			action = "action=check-logo&empname=" + empname;
+			ajax_post_async(action, manage_check_logo, [empname, empcode], false);
+		}
+
+		function manage_check_logo(data, array) {
+			if (data) {
+				window.open(
+					"https://boo3.neuvoo.com/boo3-web/get-company-info/view/multilang-company-profile.php?lang=en&src=jobsdb&search=" +
+					encodeURIComponent(array[0]), '_blank');
+			} else {
+				window.open("/ghost/logo.php?empcode=" + array[1] + '&empname=' + encodeURIComponent(array[0]),
+					'_blank');
+			}
+		}
+
+		function run_logos_query() {
+			// get parent section
+			var parent = document.getElementsByClassName("results-section")[0];
+			// remove table of results
+			parent.removeChild(parent.lastChild);
+		}
+
+		function setCaretPosition(elemId, caretPos) {
+			var elem = document.getElementById(elemId);
+
+			if (elem != null) {
+				if (elem.createTextRange) {
+					var range = elem.createTextRange();
+					range.move('character', caretPos);
+					range.select();
+				} else {
+					if (elem.selectionStart) {
+						elem.focus();
+						elem.setSelectionRange(caretPos, caretPos);
+					} else
+						elem.focus();
+				}
+			}
+		}
+
+		function show_columns() {
+			const columns = document.getElementById("columns-panel");
+
+			if (columns.style["display"] == "none" || !columns.style["display"]) {
+				columns.style["display"] = "block";
+				document.addEventListener("click", function(event) {
+					if (event.target.id == "columns-button" || event.target.parentNode.id == "columns-button" ||
+						event.target.className == "selection-panel-row" || event.target.parentNode.className == "selection-panel-row" ||
+						event.target.id == "columns-panel") {
+						// console.log(event.target);
+					} else {
+						columns.style["display"] = "none";
+					}
+				}, {
+					passive: true
+				});
+			} else {
+				columns.style["display"] = "none";
+			}
+		}
+
+		function select(element) {
+			if (element.className.includes("glyphicon-check")) {
+				element.className = element.className.replace("glyphicon-check", "glyphicon-unchecked");
+			} else {
+				element.className = element.className.replace("glyphicon-unchecked", "glyphicon-check");
+			}
+		}
+
+		function show_iframes(id, url, search_neuvoo_url) {
+
+			var toggle_icon = document.getElementById("btn_" + id).classList.toggle("glyphicon-minus");
+			console.log(id);
+			console.log("jh");
+			console.log(url);
+
+
+			if (toggle_icon) {
+				var jobs = null;
+				var selected = [];
+				// jobs.forEach(element => {
+				// 	if (element['id'] == id) {
+				// 		selected = element;
+				// 	}
+				// });
+
+				var r = document.getElementById("r_" + id);
+				var div = document.createElement("div");
+				div.setAttribute("class", "tr-row iframes-job");
+				div.setAttribute("id", "g_" + id);
+
+				div.innerHTML =
+					`<div class="iframes-cell"><div class="iframes-container-job"><div class="iframe-left">
+								<div class="main-title-search">
+									<a target="_blank" href="` +
+					search_neuvoo_url+
+					`">
+										Search on Neuvoo Jobsite</a>
+										<!-- <span style="margin-left:7px; font-size: 15px; color:#1C7EBB;" class="fa fa-external-link"></span></a> -->
+								</div>
+								<iframe id="iframe-modal-1" class="pageiframe_home" sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-pointer-lock"
+								frameborder="0" align="left" height="400px" allowtransparency
+								src="` +
+					search_neuvoo_url +
+					`"></iframe>
+							</div>
+							<div class="iframe-right">
+								<div class="main-title-search">
+									<a target="_blank" href="` +
+					url +
+					`">
+										Search on Homepage</a>
+										<!-- <span style="margin-left:7px; font-size: 15px; color:#1C7EBB;" class="fa fa-external-link"></span></a> -->
+								</div>
+								<iframe id="iframe-modal-1" class="pageiframe_home" sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-pointer-lock"
+								frameborder="0" align="left" height="400px" allowtransparency
+								src="` +
+					url + `"></iframe>
+							</div>
+					</div></div></div>`;
+
+				// r.parentNode.appendChild(div);
+				// r.parentNode.insertBefore(div, r)
+				r.after(div);
+			} else {
+				var g = document.getElementById("g_" + id);
+				g.parentElement.removeChild(g);
+			}
+
+		}
+
+		function get_filters(selection) {
+			const query = document.getElementById("query-input").value;
+			const filter_by = selection.options[selection.selectedIndex].value;
+			const facets = document.getElementsByClassName("facets-section");
+
+			if (!query) {
+				snackbar("Please, make a search");
+				return;
+			}
+
+			if (facets.length != 0) {
+				for (let i = 0; i < facets.length; i++) {
+					facets[i].parentNode.removeChild(facets[i]);
+				}
+			}
+
+			if (filter_by != "none") {
+
+				const action = "action=get-facets&query=" + query + "&filter=" + filter_by + "&limit=10";//.replace(/(\+)/g,"%2B")
+				console.log(action);
+				ajax_post_async_especialEncode(action, show_filters, filter_by);
+			}
+		}
+
+		function show_filters(data, filter) {
+			
+			console.log(data);
+			
+			var total = data["total"];
+			var limit = data["limit"];
+			var query = data["query"];
+			data = data["data"];
+
+			const parent = document.getElementsByClassName("results-section")[0];
+			const main = document.getElementsByTagName("main")[0];
+
+			var facets_section = document.createElement("div");
+			var facets = document.createElement("div");
+			var facets_header = document.createElement("div");
+			var colse_btn = document.createElement("span");
+
+			facets_section.setAttribute("id", "facets-section");
+			facets_section.setAttribute("class", "facets-section");
+
+			// colse_btn.setAttribute("class", "close");
+			// colse_btn.setAttribute("onclick", "this.parentNode.parentNode.removeChild\(this.parentNode\)");
+			// colse_btn.innerHTML = "&times;";
+			facets_section.innerHTML =
+				`
+			<span class="close" onclick="this.parentNode.parentNode.removeChild\(this.parentNode\)">&times;</span>
+			<div>
+				<strong>Facet:</strong> ` +
+				filter + `<br><br>
+			</div>`;
+			// facets_section.appendChild(colse_btn);
+
+			facets.setAttribute("class", "table");
+			// facets_header.innerHTML = `
+			// <div class="th-row">
+			// 	<div class="th-cell">Quantity</div>
+			// 	<div class="th-cell">Value</div>
+			// </div >
+			// `;
+			facets_header.innerHTML =
+				`
+				<div class="th-cell">Quantity</div>
+				<div class="th-cell">Value</div>
+				<div class="th-cell"></div>
+			`;
+			facets_header.setAttribute("class", "th-row");
+
+			facets_section.appendChild(facets);
+			facets.appendChild(facets_header);
+
+			let element_value = "";
+			let key = "";
+			for (let i = 0; i < data.length; i++) {
+				const element = data[i];
+				if("key_as_string" in data[i]){
+					key = element["key_as_string"]
+				}else{
+					key = element["key"]
+
+				}
+
+				//-----------insert Backslash to the element-------------
+
+				/* let arr_element = element['key'].split("");
+				let included = arr_element.includes("\'");
+				if (included) {
+					//console.log(arr_element);
+					let index = arr_element.indexOf("\'");
+					arr_element.splice(index, 0, "\\");
+					element_value = arr_element.join("");
+					//console.log(word);
+				} */
+
+				//---------------------------------------------------------
+
+				var facet = document.createElement("div");
+				facet.setAttribute("class", "tr-row " + ((i % 2) ? "cell-normal" : "cell-opaque"));
+
+				facet.innerHTML = `
+				<div class="tr-cell">` + data[i]["doc_count"].toLocaleString() +
+					`</div>
+				<div class="tr-cell">` + key +
+					`</div>
+				<div class="tr-cell"><span onclick="addParam2Query('` + filter + `', '` + key +
+					`')" class="glyphicon glyphicon-plus"></span></div>
+				`;
+
+
+				// facet.setAttribute("onclick", "addParam2Query('" + filter + "', '" + element["key"] + "')");
+				// facet.textContent = "[" + element["doc_count"] + "] " + element["key"];
+				facets.appendChild(facet);
+			};
+
+			if (total > limit) {
+				var show_more = document.createElement("div");
+				show_more.setAttribute("class", "show-more-facets");
+				
+				var encoded_query = encodeURI(query);
+				encoded_query = encoded_query.replace(/(\+)/g,"%2B");
+				
+				show_more.innerHTML = "<a target='_blank' href='./facets.php?query=" + encoded_query + "&filter=" + filter +
+					"'>+ show more</a>";
+				facets_section.appendChild(show_more);
+			}
+
+			main.insertBefore(facets_section, parent);
+		}
+
+		function filter_rows(str) {
+			var table = document.getElementById("jobs-table").childNodes;
+			var aux = 0;
+			for (let i = 2; i < table.length; i++) {
+				const row = table[i]
+				var match = 0;
+				row.childNodes.forEach(cell => {
+					const child = cell.getElementsByTagName("a")[0];
+					str = str.toLowerCase();
+					if (child) {
+						// console.log("tienes");
+						// console.log(child.textContent.toLowerCase());
+						// console.log(child.textContent);
+
+						text = child.textContent.toLowerCase();
+					} else {
+						text = cell.textContent.toLowerCase();
+					}
+					if (text.includes(str)) {
+						match += 1;
+					}
+				});
+				if (match == 0) {
+					row.style["display"] = "none";
+				} else {
+					aux += 1;
+					row.style["display"] = "table-row-group";
+					row.style["background"] = (aux % 2) ? "#efefef" : "";
+				}
+			}
+
+
+			// table.forEach(row => {
+			// 	var match = 0;
+			// 	row.childNodes.forEach(cell => {
+			// 		text = cell.textContent.toLowerCase();
+			// 		str = str.toLowerCase();
+			// 		if (text.includes(str)) {
+			// 			// console.log(cell.textContent);
+			// 			match += 1;
+			// 		} else {
+
+			// 		}
+			// 	});
+			// 	console.log(match);
+			// 	console.log(row);
+			// 	if (match == 0) {
+			// 		row.style["display"] = "none";
+			// 	}
+			// });
+		}
+
+		function addParam2Query(param, value) {
+
+			const query = document.getElementById("query-input").value;
+
+			let filter_replacements = {
+				"empcode": "empcode.empcode_raw",
+				"empname": "empname.empname_raw",
+				"geo_city": "geo_city.geo_city_raw",
+				"geo_country": "geo_country.geo_country_raw",
+				"geo_region1": "geo_region1.geo_region1_raw",
+				"geo_region2": "geo_region2.geo_region2_raw",
+				"geo_work_from_home": "geo_work_from_home.geo_work_from_home_raw",
+				"location": "location.location_raw",
+				"location_extra": "location_extra.location_extra_raw",
+				"salary_snippet": "salary_snippet.salary_snippet_raw",
+				"title": "title.title_raw",
+				"title_modified": "title_modified.title_modified_raw",
+				"title_simply": "title_simply.title_simply_raw"
+			};
+
+			if (filter_replacements.hasOwnProperty(param)) {
+				param = filter_replacements[param];
+			}
+
+			// if (/\s/.test(value)) {
+			// 	value = "\"" + value + "\"";
+			// }
+
+			if (param == "none") {
+
+			} else {
+				// check if a query already exists
+				if (query != "") {
+					document.getElementById("query-input").value = query + " AND " + param + ':"' + value + '"';
+					/* document.getElementById("query-input").value = `${query} AND ${param}:"${value}"w`; */
+				} else {
+					document.getElementById("query-input").value = param + ':"' + value + '"';
+					/* document.getElementById("query-input").value = `${param}:"${value}"....`;  */
+				}
+			}
+
+		}
+
+		function get_pagination_data(to) {
+			var parent = document.getElementsByClassName("page-selected")[0];
+			parent.className = to.className.replace("page-selected", "");
+			const page = parseInt(to.textContent);
+			if (page != 1) {
+				document.getElementById("first-page").style["opacity"] = 1;
+				document.getElementById("prev-page").style["opacity"] = 1;
+			} else {
+				document.getElementById("first-page").style["opacity"] = .5;
+				document.getElementById("prev-page").style["opacity"] = .5;
+			}
+			to.className = to.className + " page-selected";
+
+			var table = document.getElementsByClassName("table")[0];
+			while (table.firstChild) {
+				table.removeChild(table.firstChild);
+			}
+
+
+			// const rows =  ;
+			const query = "flag_active:1 AND scanid:76654";
+		
+			action = "action=get-pagination-data&limit=" + rows + "&start=" + rows * (page - 1) + "&query=" + query;
+
+			ajax_post_async(action, show_table, "jobs-table");
+		}
+
+		function to_page(n, max) {
+			const selected_page = parseInt(document.getElementsByClassName("page-selected")[0].textContent);
+			var to;
+			n = parseInt(n);
+
+			if (n > 0 && selected_page != max) {
+				to = document.getElementById("page-" + (selected_page + 1));
+			} else if (n < 0 && selected_page != 1) {
+				to = document.getElementById("page-" + (selected_page - 1));
+			} else if (n == 0) {
+				to = document.getElementById("page-1");
+			} else {
+				return;
+			}
+			get_pagination_data(to);
+		}
+
+		async function show_table(data, selector) {
+
+			const table_headers = ["ScanID", "Empname", "Title", "Geo", "Location", "Link", "FH", "FA", "custom_cell"];
+			const fields = ["scanid", "empname", "title", "geo", "location", "link", "flag_html", "flag_active", "custom_cell"];
+
+			const opt = {
+				"row_click_listener_custom": false,
+				"logo": false,
+				"row_color": true,
+				"row_color_hex": "#efefef",
+				"custom_cell": [{
+					"class": "glyphicon glyphicon-globe",
+					"link": "http://rabbit2.neuvoo.com/rabbit/set.php?queue=geolocation&message=",
+					"style": "color: #00b2F3;"
+				}, {
+					"class": "glyphicon glyphicon-search",
+					"link": "/service/select-by-id.php?id=",
+					"style": "color: #00b2F3;"
+				}]
+			}
+
+
+			const parent = document.getElementById(selector);
+
+			const table = get_table(table_headers, data, fields, opt);
+
+			parent.appendChild(table);
+		}
+
+		function get_table(header, data, fields, opt) {
+
+			// number of elements in a row
+			const row_item = 0;
+			try {
+				row_items = Object.keys(data[0]).length;
+			} catch (e) {
+				try {
+					row_items = Object.keys(data[1]).length;
+				} catch (e) {
+					return;
+				}
+			}
+
+			// create parent suggestion element
+			var table = document.createElement("div");
+			table.setAttribute("class", "table");
+			if (opt["suggestions_table"]) {
+				table.setAttribute("id", "suggestion-list");
+				table.setAttribute("class", "suggestion-items");
+			}
+
+			// add table headers
+			var t_header = document.createElement("div");
+			t_header.setAttribute("class", "th-row");
+			for (let i in header) {
+				var h_element = document.createElement("div");
+				h_element.setAttribute("class", "th-cell");
+
+				if (header[i] == "custom_cell") {
+					h_element.textContent = " ";
+				} else {
+					h_element.textContent = header[i];
+				}
+
+				t_header.appendChild(h_element);
+			}
+
+			table.appendChild(t_header);
+
+			// add table content
+			for (let i in data) {
+
+				t_row = document.createElement("div");
+				t_row.setAttribute("class", "tr-row");
+
+				if (opt["row_color"] && opt["row_color_hex"]) {
+					t_row.style["background"] = (i % 2) ? opt["row_color_hex"] : "";
+				}
+
+				if (opt["row_click_listener"]) {
+					t_row.addEventListener("click", function(e) {
+						redirect(data[i]['empcode'], data[i]['id'])
+					});
+				} else if (opt["row_click_listener_custom"]) {
+					const func = opt["row_click_func"];
+					t_row.addEventListener("click", function(e) {
+						func(data[i][opt["row_click_func_arg"]])
+					});
+				}
+				for (let j in fields) {
+					j = fields[j];
+
+					if (j == "logo") {
+						// first element is the logo
+						r_element = document.createElement("td");
+						r_logo = document.createElement("img");
+						r_logo.setAttribute("src", data[i]['logo']);
+						r_logo.setAttribute("class", "logo-suggestions");
+						r_element.appendChild(r_logo);
+						t_row.appendChild(r_element);
+					} else if (j == "custom_cell" && opt["custom_cell"]) {
+						// console.log("custom cell");
+
+						r_element = document.createElement("div");
+						r_element.setAttribute("class", "tr-cell");
+						for (let k in opt["custom_cell"]) {
+							k = opt["custom_cell"][k];
+							const a = document.createElement("a");
+							a.setAttribute("target", "_blank");
+							a.setAttribute("href", k["link"] + data[i]["id"]);
+							const span = document.createElement("span");
+							span.setAttribute("class", k["class"]);
+							span.setAttribute("style", k["style"]);
+							a.appendChild(span);
+							r_element.appendChild(a);
+						}
+						t_row.appendChild(r_element);
+
+					} else {
+						r_element = document.createElement("div");
+						r_element.setAttribute("class", "tr-cell");
+						if (j == "link") {
+							a_element = document.createElement("a");
+							a_element.setAttribute("href", data[i][j]);
+
+							a_element.textContent = data[i][j];
+							r_element.appendChild(a_element);
+						} else if (j == "geo") {
+							r_element.textContent = data[i]['geo_city'] + " | " + data[i]['geo_region1'] + " | " + data[i]['geo_region2'] +
+								" | " + data[i]['geo_country']
+						} else {
+							r_element.textContent = data[i][j];
+						}
+						t_row.appendChild(r_element);
+					}
+				}
+
+				table.appendChild(t_row);
+			}
+
+			return table;
+		}
+
+
+
+		function copy_clipboard() {
+			const query = document.getElementById("query-input");
+			query.select();
+			document.execCommand('copy');
+			snackbar("Copied to clipboard");
+		}
+
+		function snackbar(text) {
+			var snackbar = document.createElement("div");
+			const body = document.getElementsByTagName("body")[0];
+
+			snackbar.textContent = text;
+			snackbar.setAttribute("id", "snackbar");
+
+			body.appendChild(snackbar);
+
+			snackbar.className = "show";
+
+			setTimeout(function() {
+				snackbar.className = snackbar.className.replace("show", "");
+			}, 3000);
+		}
+
+		function redirect(page, mode = "jobs") {
+			var query = document.getElementById("query-input").value;
+			const s = 1;
+			const bc = "%2300b2F3";
+			const fc = "white";
+			const actual_mode = "jobs";
+
+			query = encodeURIComponent(query);
+
+			if (!page) {
+				page = 1;
+			}
+
+			if (mode == "jobs") {
+
+				const columns_static = ["scanid", "empname", "title", "geo", "location", "link", "flag_html", "flag_active", "cluster"];
+				var columns_list = [];
+				var column = "";
+				var contained = 0;
+
+
+				const columns_panel = document.getElementById("columns-panel");
+				checked_elements = columns_panel.getElementsByClassName("glyphicon-check");
+				for (let i = 0; i < checked_elements.length; i++) {
+					column = checked_elements[i].parentNode.id.substring(6);
+					columns_list.push(column);
+					if (columns_static.includes(column)) {
+						contained += 1;
+					}
+				}
+
+				if (query) {
+					if ((contained != columns_list.length || contained != columns_static.length) && actual_mode != "logos") {
+						window.location = "?m=" + mode + "&s=" + s + "&bc=" + bc + "&fc=" + fc + "&p=" + page + "&query=" + query + "&c=" +
+							encodeURIComponent(JSON.stringify(
+								columns_list));
+					} else {
+						window.location = "?m=" + mode + "&s=" + s + "&bc=" + bc + "&fc=" + fc + "&p=" + page + "&query=" + query;
+					}
+				} else {
+					window
+					window.location = "";
+				}
+			} else {
+				window.location = "?m=" + mode + "&p=" + page + "&s=" + s + "&bc=" + bc + "&fc=" + fc + "&query=" + query;
+			}
+			return;
+		}
+
+
+
+		function ajax_post_async(action, func, selector = "", async = true, url = "async.php") {
+			var encoded_action = encodeURI(action);
+			console.log(encoded_action);
+			$.ajax({
+				url: url,
+				data: encodeURI(action),
+				type: "POST",
+				async: async,
+				success: function(data) {
+					if (typeof func === "function") {
+						func(data, selector);
+					}
+				},
+				error: function(x, y, z) {
+					console.log(x.responseText + " " + x.status)
+				}
+			});
+		}
+
+		function ajax_post_async_especialEncode(action, func, selector = "", async = true, url = "async.php") {
+			var encoded_action = encodeURI(action);
+			encoded_action = encoded_action.replace(/(\+)/g,"%2B");
+			console.log(encoded_action);
+			$.ajax({
+				url: url,
+				data: encoded_action,
+				type: "POST",
+				async: async,
+				success: function(data) {
+					if (typeof func === "function") {
+						func(data, selector);
+					}
+				},
+				error: function(x, y, z) {
+					console.log(x.responseText + " " + x.status)
+				}
+			});
+		}
+	</script>
+
+
+</body></html>

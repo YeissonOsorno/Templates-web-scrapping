@@ -10,6 +10,8 @@ var remove_selectors = ['a','input','div.alert','img', 'button',
                         
 ];
   //var job = pass_it["job"];
+  
+  
 
   //------------INFO----------------------------------------------------------//
  /* // Para validar la existencia del selector. Si no existe habrá error de selector. 
@@ -22,7 +24,7 @@ var remove_selectors = ['a','input','div.alert','img', 'button',
 
  }
 */
-  // job.location       = document.querySelector('').textContent.trim();
+  //job.location       = document.querySelector('').textContent.trim();
   // job.source_jobtype = document.querySelector('').textContent.trim();
   // job.source_salary  = document.querySelector('').textContent.trim();
 
@@ -57,6 +59,7 @@ if (typeof msg == "undefined") msg = console.log;
     }
      
     */
+ 
 
 
  // TO Remove selectors 

@@ -1,6 +1,6 @@
 // Replace (),[],<> in location
 job.location = job.location.replace(/\(.*?\)/g, '').replace(/\[.*?\]/g, '').replace(/\<.*?\>/g, '').trim();
-job.title = job.title.replace(/\(.*?\)/g, '').replace(/\[.*?\]/g, '').replace(/\<.*?\>/g, '').split('-'),shift().replace(/[0-9]/g,'').trim();
+job.title = job.title.replace(/\(.*?\)/g, '').replace(/\[.*?\]/g, '').replace(/\<.*?\>/g, '').trim();
 job.title = job.title.replace(/\(.*?\)/g, '').replace(/\[.*?\]/g, '').replace(/\<.*?\>/g, '').replace(/[0-9]/g,'').trim();
 
 //Reemplazar locacion del titulo
@@ -126,3 +126,17 @@ job.html = job.html.split(/[]/g,"<br>*");
 var script = document.createElement('script');
 script.src = "https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js";
 document.getElementsByTagName('head')[0].appendChild(script);
+
+//reqid icims
+for (const a of elem.querySelectorAll('div[role="list"]>dl')) {
+    if (a.textContent.search('Job ID')>-1){
+         job.reqid = a.innerText.split('Job ID').pop().trim();
+    } 
+  }
+
+  //reqid ultipro
+  for (const a of elem.querySelectorAll('div[class="row paragraph"]>div')) {
+    if (a.textContent.search('Requisition Number')>-1){
+         job.reqid = a.innerText.split(':').pop().trim();
+    } 
+  }

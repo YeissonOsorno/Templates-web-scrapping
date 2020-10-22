@@ -1,0 +1,1661 @@
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+																		/*STANDARD*/
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+html {
+	font-family: sans-serif;
+	font-size: 10px;
+}
+
+body {
+	margin: 0;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 13px;
+	line-height: 1.42857143;
+}
+
+/* JOHAN NAV */
+
+.top-nav {
+  background-color: transparent;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  height: 60px;
+  z-index: 999;
+}
+
+/* navbar sections */
+
+.top-nav .left-section, .top-nav .right-section, .top-nav .middle-section {
+  display: flex;
+}
+
+.top-nav a {
+  text-decoration: none;
+  color: #414141;
+  transition: color 0.3s ease;
+}
+
+.top-nav a:hover {
+  color: #00b2F3;
+}
+
+/* menu toogle */
+
+#menu-toggle {
+  display: block;
+  position: relative;
+  top: 15px;
+  left: 15px;
+  z-index: 1;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#menu-toggle input {
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  top: -7px;
+  left: -5px;
+  cursor: pointer;
+  opacity: 0;
+  /* hide this */
+  z-index: 2;
+  /* and place it over the hamburger */
+  -webkit-touch-callout: none;
+}
+
+/* menu hamburger */
+
+#hamburger-container span {
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+  background: white;
+  /* background: #cdcdcd; */
+  border-radius: 3px;
+  z-index: 1;
+  transform-origin: 4px 0px;
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0), background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0), opacity 0.55s ease;
+}
+
+#hamburger-container span:first-child {
+  transform-origin: 0% 0%;
+}
+
+#hamburger-container span:nth-last-child(2) {
+  transform-origin: 0% 100%;
+}
+
+/* 
+ * Transform all the slices of hamburger
+ * into a crossmark.
+ */
+
+#menu-toggle input:checked~#hamburger-container span {
+  opacity: 1;
+  transform: rotate(45deg) translate(-2px, -1px);
+  background: #414141;
+}
+
+/*
+ * let's hide the middle one.
+ */
+
+#menu-toggle input:checked~#hamburger-container span:nth-last-child(2) {
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+/*
+ * the last one should go the other direction
+ */
+
+#menu-toggle input:checked~#hamburger-container span:nth-last-child(1) {
+  transform: rotate(-45deg) translate(-4px, -3px);
+}
+
+/* message on the menu toggle */
+
+#greeting-msg {
+  width: max-content;
+  max-width: 300px;
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 40px;
+  -webkit-font-smoothing: antialiased;
+  font-size: 17px;
+  transform-origin: 0% 0%;
+  transform: translate(-200%, 0);
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+}
+
+/*
+ * Make this absolute positioned
+ * at the top left of the screen
+ */
+
+#menu {
+  position: absolute;
+  width: 300px;
+  margin: -100px 0 0 -50px;
+  padding: 50px;
+  padding-top: 125px;
+  background: #ededed;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  /* to stop flickering of text in safari */
+  transform-origin: 0% 0%;
+  transform: translate(-100%, 0);
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+}
+
+#menu li {
+  padding: 10px 0;
+  font-size: 22px;
+}
+
+/*
+ * And let's slide it in from the left
+ */
+
+#menu-toggle input:checked~ul {
+  transform: none;
+}
+
+#menu-toggle input:checked~#greeting-msg {
+  transform: none;
+}
+
+/* top navigation bar logo */
+
+.top-nav .neuvoo-icon {
+  position: relative;
+  padding: 15px 0px 0 40px;
+}
+
+.top-nav .neuvoo-icon img {
+  height: 16px;
+  cursor: pointer
+}
+
+
+/* JOHAN NAV */
+
+
+/*==============================
+=             NAV             =
+==============================*/
+
+nav {
+	background: rgba(66, 66, 66,1);
+	height: 160px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-image: linear-gradient(to right, #00b2F3 , #8963FF);
+	/*position: sticky;*/
+	/*position: -webkit-sticky;*/
+	top: 0;
+	/*z-index: 999999;*/
+	/*margin-bottom: 15px;*/
+}
+
+/*---------  sections  ---------*/
+
+nav .left-section, 
+nav .middle-section, 
+nav .right-section {
+	flex-basis: 450px;
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
+
+nav .left-section > div,
+nav .middle-section > div, 
+nav .right-section > div {
+	padding: 0 15px;
+	white-space: nowrap;
+	color: white;
+	cursor: pointer;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	/*min-width: 70px;*/
+	font-size: 13px;
+}
+
+/*nav .left-section > div:hover, 
+nav .right-section > div:hover {
+	color: rgb(88, 175, 245);
+	background: black;
+}*/
+
+/*-------  left-section  -------*/
+
+.nav-option.menu {
+	position: relative;
+}
+
+/*-------  middle-section  ------*/
+
+nav .middle-section {
+	justify-content: center;
+	height: 100%;
+}
+
+/*--------  right-section  ------*/
+
+nav .right-section {
+    justify-content: flex-end;
+    height: 100%;
+}
+
+nav .right-section > div {
+	border-right: 1.5px solid dimgray;
+	font-size: 12px;
+	width: 70px;
+}
+
+
+nav .nav-option.info {
+	width: auto;
+	text-transform: capitalize;
+}
+
+#pagination nav .nav-option.save {
+	/*border-left: 1.5px solid dimgray;*/
+	font-size: 12px;
+}
+
+/*----------  input  ----------*/
+
+#nav-search {
+	border: none;
+	border-bottom: 1.5px solid dimgray;
+	outline: none;
+	height: 25px;
+	font-size: 13px;
+	background: transparent;
+	margin: 0 30px;
+	color: white;
+	width: 70%;
+}
+
+nav .search-input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: white;
+}
+
+nav .search-input::-moz-placeholder { /* Firefox 19+ */
+  color: white;
+}
+
+/*===============================
+=            NAVMENU            =
+===============================*/
+
+.nav-option.menu #nav-menu-label {
+	transform: scale(0.5);
+}
+.nav-option.menu .nav-menu {
+	position: absolute;
+	background: #5f5f5f;
+	color: rgb(255, 255, 255);
+	display: flex;
+	flex-direction: column;
+	width: 226px;
+	left: 0;
+	top: 60px;
+	align-items: flex-start;
+	font-size: 13px;
+	justify-content: space-between;
+}
+
+.nav-option.menu .nav-menu div:hover {
+	background: #454545;
+	color: rgb(88, 175, 245);
+}
+
+.nav-option.menu .nav-menu a:hover {
+	background: #454545;
+	color: rgb(88, 175, 245);
+}
+
+/*----------  collapsed  ----------*/
+
+.nav-menu-collapsed {
+	height: 0;
+	transition: height 0.4s ease-in 0.2s;
+	z-index: -1;
+}
+.nav-menu-collapsed div {
+	opacity: 0;
+	transition: opacity 0.3s ease-in;
+}
+
+.nav-menu-collapsed a {
+	opacity: 0;
+	transition: opacity 0.3s ease-in;
+}
+
+/*----------  expanded  ----------*/
+
+.nav-menu-expanded {
+	visibility: visible;
+	opacity: 1;
+	height: 220px;	
+	transition: height 0.4s ease-out,opacity 0.7s ease-out 0.9s;
+}
+
+/*---------  menu toggle  --------*/
+
+.nav-menu-toggle {
+  z-index: 99999999; 
+}
+
+.nav-menu-toggle:focus {
+	color:rgb(88, 175, 245);
+}
+
+/*------  general elements  -------*/
+
+.nav-option.menu .nav-menu div {
+	white-space: nowrap;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-grow: 1;
+}
+
+.nav-option.menu .nav-menu a {
+	white-space: nowrap;
+	width: 80%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	flex-grow: 1;
+	text-decoration: none;
+	color: white;
+	padding-left: 20%;
+	outline: none;
+	font-size: 12px;
+}
+
+/*--  after & before lines  ---*/
+
+#nav-menu-span.active-span::after,
+#nav-menu-span.active-span::before {
+	background: rgb(88, 175, 245);
+}
+
+.x1 :before,
+.x1 :after {
+  -webkit-transition: all 300ms ease;
+  transition: all 300ms ease;
+  cursor: pointer;
+}
+
+.x1 input {
+  display: none;
+}
+
+.x1 label {
+  display: block;
+  width: 5rem;
+  height: 3.5rem;
+  position: relative;
+  cursor: pointer;
+}
+
+.x1 label span {
+  position: relative;
+  top: 1.5rem;
+}
+
+.x1 label span, .x1 label span:before, .x1 label span:after {
+  display: block;
+  background: #CFD8DC;
+  width: 5rem;
+  height: 0.3rem;
+  border-radius: 0.25rem;
+}
+
+.x1 label span:before, .x1 label span:after {
+  content: '';
+  position: absolute;
+}
+
+.x1 label span:before {
+  bottom: 1.5rem;
+}
+
+.x1 label span:after {
+  top: 1.5rem;
+}
+
+.x1 :checked ~ label span {
+  background: none;
+}
+
+.x1 :checked ~ label span:before {
+  -webkit-animation: x1Before 500ms forwards;
+          animation: x1Before 500ms forwards;
+}
+
+.x1 :checked ~ label span:after {
+  -webkit-animation: x1After 500ms forwards;
+          animation: x1After 500ms forwards;
+}
+
+@-webkit-keyframes x1Before {
+  50% {
+    bottom: 0;
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    bottom: 0;
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+  }
+}
+
+@keyframes x1Before {
+  50% {
+    bottom: 0;
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    bottom: 0;
+    -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+  }
+}
+
+@-webkit-keyframes x1After {
+  50% {
+    top: 0;
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    top: 0;
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+  }
+}
+
+@keyframes x1After {
+  50% {
+    top: 0;
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    top: 0;
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+  }
+}
+
+/*==============================
+=             LOGOS             =
+==============================*/
+
+.logo-img{
+	/*width: 320px;*/
+}
+
+/*
+===============================
+=            PANELS           =
+===============================
+*/
+.panel-container {
+	display: flex;
+	justify-content: space-between;
+
+}
+.p-panel {
+	box-shadow: 0 1px 1px rgba(0,0,0,0.3);
+	margin: 0 7px;
+	padding: 15px;
+	flex-basis: 33%; 
+	height: 125px;
+	position: relative;
+	border-radius: 5px;
+	background: white;
+}
+
+.p-panel label {
+	display: inline-block;
+	font-weight: 700;
+	border-bottom: 2px solid lightblue;
+	padding-bottom: 3px;
+	color: #454545;
+	margin-bottom: 10px;
+	font-size: 18px;
+}
+.p-panel:first-child {
+	margin-left: 0;
+}
+.p-panel:last-child {
+	margin-right: 0;
+}
+.p-panel .element-text {
+	display: inline-block;
+	margin: 5px;
+}
+.p-panel p:last-child {
+	/*position: absolute;
+	bottom: 0;
+	left: 15px;*/
+
+	margin-top: 7px;
+}
+
+
+/*===============================
+=            MAIN               =
+===============================*/
+
+main {
+	padding: 0 30px;
+	/*margin-top: 30px;*/
+}
+
+
+/*===============================
+=            TABLES             =
+===============================*/
+
+table {
+	border-collapse:collapse;
+	/*box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px 0px;*/
+	background: rgb(255, 255, 255);
+}
+
+thead {
+	text-align: left;
+}
+
+thead > tr {
+	background-color: rgb(236, 239, 241);
+}
+
+
+.field {
+	cursor: pointer;
+}
+
+#status-main table td, #status-main table th {
+	width: 5%;
+}
+
+td ,td * {
+	color: #616161;
+	text-decoration: none;
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, 
+.table>tfoot>tr>td, .table>tfoot>tr>th, 
+.table>thead>tr>td, .table>thead>tr>th {
+	padding: 5px;
+
+}
+
+#status-main td, #status-main td * {
+	font-size: 12px;
+}
+
+td > span {
+	cursor: pointer;
+}
+
+.table > tbody > tr:hover {
+	background-color: rgb(245, 245, 245)!important;
+}
+
+td > span:hover {
+	cursor: pointer;
+	color: #29ADE4;
+}
+
+td > a:hover{
+	text-decoration: underline;
+	color: rgb(35, 87, 150);
+
+}
+
+.table > tbody > tr > td, 
+.table > tbody > tr > th, 
+.table > tfoot > tr > td, 
+.table > tfoot > tr > th, 
+.table > thead > tr > td, 
+.table > thead > tr > th {
+    border-top: none;
+
+}
+
+/*
+===============================
+=          PAGINATION         =
+===============================
+*/
+.pagination {
+	display: inline-block;
+	margin: 25px 0;
+}
+.pagination span {
+	color: rgba(33, 150, 243,1);
+	float: left;
+	padding: 8px 16px;
+	text-decoration: none;
+	cursor: pointer;
+	background: white;
+	box-shadow: 0 1px 1px rgba(0,0,0,0.3);
+	font-size: 14px;
+}
+.pagination span:hover {
+	background: rgba(33, 150, 243,0.3);
+}
+.pagination .current {
+	color: #fff;
+	background-color: rgba(33, 150, 243,0.75);
+}
+.pagination .prev {
+	margin-right: 7px;
+}
+.pagination .next {
+	margin-left: 7px;
+}
+/*
+
+/*===============================
+=            IFRAME             =
+===============================*/
+
+#info-iframe {
+	position: fixed;
+    margin: 0 15%;
+    width: 70%;
+    height: 88%;
+    border:0.5px solid lightgray;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.3);
+    transition: top linear 0.6s,opacity linear 0.5s;
+    overflow-y: hidden; 
+}
+.hide-iframe {
+	top:-100%;
+	opacity: 0;
+}
+.show-iframe {
+	top: 70px;
+	opacity: 1;
+}
+
+.blur-filter {
+	opacity: 0.1;
+	transition: all ease-in 0.3s;
+}
+
+/*===============================
+=           MAINTITLE           =
+===============================*/
+
+.main-title {
+	font-size: 14px!important;
+	color: white;
+	background: rgb(80, 158, 227);
+	margin: 15px 0;
+	border-radius: 0;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px 0px;
+	text-indent: 7px;
+	width: 100%;
+	text-transform: uppercase;
+	height: 30px;
+}
+
+h3 {
+	/*margin-top: 20px;*/
+	margin-top: 15px;
+	font-size: 24px;
+	/*width: 300px;*/
+	text-transform: capitalize;
+}
+
+h1 {
+	font-weight: 500;
+	font-size: 12px;
+}
+
+.info-empcode span {
+	margin-left: 20px;
+	margin-top: 20px;
+	/*position: absolute;*/
+}
+
+.info-empcode {
+	/*margin-top: 20px;*/
+	margin-right: 20px;
+}
+
+/*===============================
+=           SHOWNOTI            =
+===============================*/
+
+#spider-notification {
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 50px;
+    padding: 0 20px;
+    background: #757575;
+    position: fixed;
+    opacity: 0.9;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+#spider-notification div {
+	display: flex;
+}
+#spider-notification div span {
+	color:white;
+	margin-right: 7px;
+}
+#spider-notification div p {
+	margin:0;
+	color: white;
+}
+
+#spider-notification.show-noti {
+	bottom: 10px;
+	right: 10px;
+	opacity: 1;
+	visibility: visible;
+	transition: all 1s linear;
+}
+#spider-notification.hide-noti {
+	bottom: -100px;
+	right: 10px;
+	opacity: 0;
+	visibility: none;
+	transition: all 1s linear;	
+}
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+																		/*CUSTOM*/
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+
+/*==============================
+=           GENERAL            =
+==============================*/
+
+/*@import url('https://fonts.googleapis.com/css?family=Open+Sans');*/
+
+/*body{
+	background: #FAFAFA;
+}
+
+*{
+	font-family: 'Open Sans', sans-serif;
+}*/
+
+body#pagination {
+	background: rgb(250, 250, 250);
+}
+
+/*==============================
+=         SPIDER VIEW          =
+==============================*/
+
+#spider-body {
+	padding:0 0;
+	background-color: rgb(250, 250, 250);
+	color: #767676;
+}
+
+/*---  group header info  ----*/
+
+#spider-body .group-header-info {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: relative;
+	background: white;
+	margin:0;
+	padding: 5px 7px;	
+	border-top: 0.5px solid rgb(236, 239, 241);
+}
+
+#spider-body .group-header-info span {
+	font-weight: bold;
+	font-size: 14px;
+	flex-basis: 17%;
+}
+#spider-body .group-header-info > span:first-child {
+	margin-left: 0px!important;
+}
+
+/*----  filter section  ----*/
+
+#spider-body .filter-container {
+	font-size: 12px;
+	padding: 7px 0;
+}
+
+#spider-body #custom_code {
+	font-size: 12px;
+	padding: 0;
+}
+
+#spider-body #filter-section-title {
+	position: absolute;
+	top: 0;
+	border-bottom: 1.5px solid rgb(88, 175, 245);
+	left: 20px;
+	padding-bottom: 10px;
+}
+
+#spider-body #filter-section label {
+	padding-bottom: 10px;
+	border-bottom: 1.5px solid rgb(88, 175, 245);
+	font-size: 24px;
+	font-weight: bold;
+	margin-right: 10px;
+
+}
+
+#spider-body #filters-close {
+	position: absolute;
+	right: 0;
+	top: 0;
+	padding:13px;
+	cursor: pointer;
+	font-size: 18px;
+}
+#spider-body #filters-close:hover {
+	color: rgb(88, 175, 245);	
+}
+#spider-body #filter-section-buttons {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	display: flex;
+	padding:13px;
+}
+#spider-body #filter-section-buttons div {
+	margin-right: 7px;
+	padding: 9px 0px 9px 0px;
+	font-size: 13px;
+	border: none;
+	background-color: #29ADE4;
+	color: white;
+	cursor: pointer;
+	box-shadow: 0 3px 1px -2px #ccc;
+	outline: none;
+	height: 30px;
+	width: 70px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+#spider-body #filter-section-buttons div:first-child {
+	background: rgb(118, 118, 118);
+}
+#spider-body #filter-section-buttons div:hover {
+	box-shadow: 0px 2px 8px 0px rgb(117, 117, 117);
+}
+#spider-body #filter-section-buttons div:active {
+	box-shadow: inset 0px 2px 8px 0px rgb(117, 117, 117);
+}
+#spider-body #loader-span {
+	color:#333;
+}
+#spider-body #filter-section {
+	height: 30px;
+	background: rgb(255, 255, 255);
+	width: 100%;
+	display: flex;
+	padding: 60px 0;
+	position: relative;
+	transition: height 0.3s ease-out,padding 0.3s ease-out,opacity 0.3s ease-out 0.3s,visibility 0.3s ease-out 0.3s;
+	box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px 0px;
+	margin-bottom: 20px;
+	justify-content: space-between;
+}
+
+#spider-body #filter-section input {
+	height: 24px;
+	width: 150px;
+}
+
+#spider-body .hidden-filter-section {
+	height: 0!important;
+	padding: 0!important;
+	visibility: hidden!important;
+	opacity: 0!important;
+	margin: 0 !important;
+	transition: height 0.3s ease-out 0.3s,padding 0.3s ease-out 0.3s,margin 0.3s ease-out 0.3s,opacity 0.3s ease-out,visibility 0.3s ease-out!important; 
+}
+#spider-body #filter-list {
+	flex-basis: 45%;
+	/*display: flex;*/
+	justify-content: space-around;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-right: 25px;
+	margin-left: 25px;
+}
+#spider-body #filter-custom {
+	flex-basis: 45%;
+	margin-top: 14px;
+}
+#spider-body #custom_code {
+	height: 195px;
+	width: 96%;
+	/*border: 0.5px solid lightgray;*/
+}
+#spider-body #custom_code textarea {
+	width: 100%;
+	height: 270px;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	overflow: hidden;
+	resize: none;
+	border: 0.5px solid lightgray;
+}
+#spider-body #filter-list > div > div {
+	display: flex;
+}
+#spider-body #filter-list input {
+	border:none;
+	border-bottom: 0.5px solid lightgray;
+	outline: none;
+	flex-grow: 1;
+	padding-bottom: 0px;
+	text-indent: 2px;
+	margin-bottom: 9px;
+}
+#spider-body #filter-list span {
+	margin-right: 5px;
+	white-space: nowrap;
+	width: 120px;
+}
+#spider-body #first-half, #spider-body #second-half {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	flex-basis: 45%;
+}
+#spider-body #first-half div, #spider-body #second-half div {
+	margin-bottom: 7px;
+}
+
+
+/*----  spider tables  ----*/
+
+#spider-body table {
+	padding: 14px 7px;
+	margin-bottom: 15px!important;
+	/*box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px 0px;*/
+	background: white;
+	text-align: center;
+	margin-top: 10px;
+	font-weight: 400;
+}
+
+.table>thead>tr>th {
+	padding: 8px!important;
+	font-size: 13px!important;
+}
+
+#spider-body .table>tbody>tr>td, 
+#spider-body .table>tbody>tr>th, 
+#spider-body .table>tfoot>tr>td, 
+#spider-body .table>tfoot>tr>th, 
+#spider-body .table>thead>tr>td, 
+#spider-body .table>thead>tr>th {
+	border:none;
+	font-size: 15px;
+	padding: 2px 8px 2px 8px;
+	color: #74838f;
+	text-transform: uppercase;
+}
+#spider-body tr > th {
+	font-weight: normal!important;
+}
+#spider-body thead > tr {
+	background-color: rgb(236, 239, 241);
+}
+
+#spider-body thead td, 
+#spider-body th {
+	cursor: pointer;
+}
+#spider-body #loader {
+	margin: 20px 0;
+}
+#spider-body .group_table {
+	width: 100%
+}
+
+#spider-body #jobs-table th span {
+	margin:0 7px;
+}
+#spider-body #jobs-table th span:first-child {
+	margin: 0;
+}
+#spider-body
+.text {
+	white-space: nowrap;
+}
+
+#spider-body .table[id*="groups-table"]>thead>tr>th,
+#spider-body .table[id*="groups-table"]>tbody>tr>td {
+	width: 10%;
+	text-align: center;
+}
+#spider-body .table[id*="groups-table"]>thead>tr>th:nth-child(1),
+#spider-body .table[id*="groups-table"]>tbody>tr>td:nth-child(1),
+#spider-body .table[id*="groups-table"]>thead>tr>th:nth-child(2),
+#spider-body .table[id*="groups-table"]>tbody>tr>td:nth-child(2) {
+	width: 12%;
+	text-align: left;
+}
+
+#spider-body .table[id*="groups-table"]>thead>tr>th:nth-child(1),
+#spider-body .table[id*="groups-table"]>tbody>tr>td:nth-child(1) {
+	width: 5%;
+}
+
+#spider-body .glyphicon-triangle-bottom {
+	font-size: 10px!important;
+	margin-left: 3px;
+}
+
+#spider-body #jobs-table .sort-icon,
+#spider-body .glyphicon-filter {
+	font-size: 12px;
+	color:#9E9E9E;
+	border-bottom:2px solid lightgray;
+	margin-right: 0px;
+	cursor: pointer;
+}
+
+#spider-body .sort-icon {
+	font-size: 12px;
+	color:#9E9E9E;
+	border-bottom:2px solid lightgray;
+	margin-right: 0px;
+	cursor: pointer;
+	margin-left: 7px;
+}
+
+#spider-body .sort-icon:first-child {
+	margin:0!important;
+}
+
+#spider-body #jobs-table .sort-icon:hover,
+#spider-body .glyphicon-filter:hover {
+	color: rgba(33, 150, 243,0.75);
+	border-color: rgba(33, 150, 243,0.75);
+}
+
+#spider-body .glyphicon-filter {
+	margin-right: 5px!important;
+}
+
+#spider-body #jobs-table th, #spider-body .groups-table th {
+	font-weight: bold!important;
+}
+
+#spider-body th {
+	font-weight: bold!important;
+	white-space: nowrap;
+}
+
+/*----  group tables dropdowns  ----*/
+
+#spider-body .group-dropdown {
+	font-size: 14px;
+	height: 30px;
+	width: 100px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	border-radius: 3px;
+	background: rgb(88, 175, 245);
+	color: rgb(255, 255, 255);
+}
+
+#spider-body .group-dropdown:hover {
+	cursor: pointer;
+	background: #F5F5F5;
+}
+#spider-body .group-dropdown-menu {
+	position: absolute;
+	border:0.5px solid lightgray;
+	width: 100px;
+	padding-left: 0;
+	background: rgb(255, 255, 255);
+	border-radius: 0 0 3px 3px;
+    border-top: none;
+}
+
+#spider-body .group-dropdown-menu li {
+	display: flex;
+	align-items: center;
+	padding: 7px 0;
+	padding-left: 7px;
+	cursor: pointer;
+}
+
+#spider-body .group-dropdown-menu li a {
+	text-decoration: none;
+	color: gray;
+	font-size: 14px;
+	font-weight: normal;
+}
+#spider-body .group-dropdown-menu li:hover {
+	background: #E0E0E0;
+	color: rgb(255, 255, 255);
+	width: 98%;
+}
+
+/*==============================
+=       COMPANIES LIST         =
+==============================*/
+
+#companies-list-main nav .left-section > div, 
+#companies-list-main .middle-section > div, 
+#companies-list-main .right-section > div {
+	width: auto;
+}
+
+.is-indexed-nav .nav-option.menu #nav-menu-label {
+	transform: scale(0.37)!important;
+}
+
+#companies-list-body thead > tr > th {
+   padding: 8px 7px;
+   font-weight: 700;
+   text-transform: capitalize;
+   text-align: left;
+   color: #616161;
+   font-size: 11px;
+   white-space: nowrap;
+}
+
+#companies-list-body td {
+   color: gray;
+   font-size: 11px !important;
+   padding: 8px 7px;
+}
+
+#companies-list-body thead > tr > th span {
+   margin-left: 5px;
+   color: gray;
+   cursor: pointer;
+   font-size: 10px;
+}
+
+#companies-list-body td span {
+   margin-left: 5px;
+   color: gray;
+   cursor: pointer;
+   font-size: 10px;
+}
+
+#companies-list-body .cc-row-action {
+  white-space: nowrap;
+}
+.cc-row-homepage {
+	white-space: nowrap;
+}
+
+/*===============================
+=         JOBDESCRIPTION        =
+===============================*/
+
+
+#job-description-main .red_bg {
+  background-color: red;
+}
+
+#job-description-main #page {
+  padding: 0 15px;
+  width:100%;
+  float: left;
+  position: relative;
+  margin-top: 0;
+}
+
+#job-description-main #screenshot {
+  width:50%;
+  float: left;
+}
+
+#job-description-main .clearfix {
+  clear:both
+}
+
+#job-description-main .yellow_bg {
+  background-color: rgb(245, 245, 246);
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px 0px;
+}
+
+#job-description-main .orange_bg {
+  background: rgba(33, 150, 243,0.85);
+  color: white;
+}
+
+#job-description-main .red_bg {
+  background-color: #FFCDD2;
+}
+
+#job-description-main #page *{
+  padding:5px;
+  margin:10px 0;
+}
+
+#job-description-main #page :first-child {
+  margin-top: 0;
+}
+
+#dynamic-selection-dd {
+  background: #454545;
+  color: white;
+  display: inline-flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 9999;
+}
+
+#dynamic-selection-dd h3 {
+  margin:0;
+  margin-bottom: 15px;
+  font-weight: normal;
+}
+
+#dd-options div {
+  padding: 10px;
+  margin: 7px 0;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+#dd-options div:hover {
+  color: rgba(33, 150, 243,1);
+}
+
+/*===============================
+=    TEST JOBDESCRIPTION VIEW   =
+===============================*/
+
+#test-jobdescription-body {
+	background: rgb(250,250,250);
+}
+
+#test-jobdescription-main table {
+  border-collapse: separate!important;
+  border-spacing: 15px;
+  box-shadow: none;
+  background: transparent;
+}
+
+#test-jobdescription-main td {
+  border-collapse: separate;
+  padding: 25px;
+  box-shadow:rgba(0, 0, 0, 0.3) 0px 1px 1px 0px;
+  background: white;
+}
+
+#test-jobdescription-main .title-td {
+  padding: 10px 8px;
+  font-size: 14px!important;
+  color: white;
+  background: rgba(33, 150, 243,0.75);
+  margin: 15px 0;
+  border-radius: 0;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px 0px;
+  text-transform: uppercase;
+  height: 30px;
+}
+
+#test-jobdescription-main .page-text {
+    width: 50%;
+}
+
+#test-jobdescription-main .page-screenshot {
+    width: 50%;
+}
+
+#test-jobdescription-main #predictions {
+  width:33%;
+  float: left;
+}
+#test-jobdescription-main #page {
+  padding: 0 15px;
+  width:50%;
+  float: left;
+  position: relative;
+  margin-top: 0;
+}
+#test-jobdescription-main #screenshot {
+  width:50%;
+  float: left;
+}
+#test-jobdescription-main .clearfix {
+  clear:both
+}
+
+#test-jobdescription-main #page * {
+  padding:5px;
+  margin:10px 0;
+}
+#test-jobdescription-main #page:first-child {
+  margin-top: 0;
+}
+
+
+
+/*===============================
+=        COMPANIES LIST         =
+===============================*/
+
+#companies-list-main .middle-section .nav-dropdown-button {
+	width: 25%;
+}
+
+#companies-list-main .middle-section .nav-dropdown-button #nav-dropdown-name {
+	font-size: 13px;
+}
+
+/*===============================
+=        TEST SPIDER VIEW       =
+===============================*/
+
+
+
+#test-spider-main .p-panel {
+	height: 70px; 
+}
+
+#test-spider-main .p-panel p.element-text {
+	position: absolute;
+	right: 15px;
+	font-size: 18px;
+	color: gray;
+}
+
+#test-spider-main .p-panel label {
+	font-size: 16px;
+}
+ 
+.red {
+	background-color: rgba(255, 23, 68,0.12);
+}
+
+.green {
+	background-color: rgba(105, 240, 174,0.1);
+}
+
+.blue {
+	background-color: rgb(41, 121, 255,0.1);
+}
+
+#test-spider-main table {
+	border-collapse: collapse;
+	box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 1px 0px;
+	background: rgb(255, 255, 255);
+}
+
+#test-spider-main thead > tr {
+    background-color: rgb(236, 239, 241);
+}
+
+#test-spider-main thead > tr > th {
+   padding: 8px 7px;
+   font-weight: 700;
+   text-transform: capitalize;
+   text-align: left;
+   color: #616161;
+   font-size: 11px;
+   white-space: nowrap;
+}
+#test-spider-main thead > tr > th span {
+   margin-left: 5px;
+   color: gray;
+   cursor: pointer;
+}
+#test-spider-main tbody > tr > td {
+   padding: 8px 7px;
+   font-weight: normal;
+   text-transform: capitalize;
+   font-size: 11px;
+   color: #616161;
+}
+
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+											    /*PPC OVERVIEWS*/
+/*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+.floating-box {
+    width: 40%;
+    height: 100%;
+    display: flex;
+	justify-content: flex-end;
+	align-items: center;
+    background-color: white;
+}
+/*.floating-box:hover {
+	box-shadow: 0px 2px 8px 0px rgb(117, 117, 117);
+}*/
+
+.floating-box.normal {
+    border-left-color: green;
+}
+
+.floating-box.warning {
+    border-left-color: orange;
+}
+
+.floating-box.alert {
+    border-left-color: red;
+}
+
+.box-title {
+    margin-left: 7px;
+    margin-top: 7px;
+    margin-bottom: 4px;
+    font-family: sans-serif;
+    font-size: 13px;
+    color: #74838f;
+    /* font-weight: bold; */
+}
+
+.box-num {
+    margin-right: 7px;
+    text-align: left;
+    font-size: 20px;
+    color: rgb(80, 158, 227);
+    display: inline;
+    /* font-weight: bold; */
+    color: darkslategray;
+}
+
+.box-per {
+    margin-right: 7px;
+    margin-bottom: 7px;
+    text-align: right;
+    font-size: 14px;
+    color: gray;
+}
+
+.normal {
+    color: green;
+}
+
+.warning {
+    color: orange;
+}
+
+.alert {
+    color: red;
+}
+
+.clickeable {
+    /*cursor: pointer;*/
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
+    grid-gap: 12px;
+    /* padding-top: 20px;
+    padding-bottom: 20px; */
+}
+
+.overview {
+    /*border: 1px solid lightgray;*/
+    margin-bottom: 20px;
+    background: white;
+    width: 100%;
+    padding: 15px;
+	background: #f6f9fc;
+	border: 1px solid #e4e4e4;
+    /*height: 950px;*/
+}
+/* Dropdown Button */
+
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+
+.dropdown {
+    /* position: relative; */
+    /* display: inline-block; */
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 50px 5px 10px;
+    border: 1px solid #ccc;
+    margin-left: 15px;
+}
+
+/* Dropdown Content (Hidden by Default) */
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
+.anchor:after {
+    position: absolute;
+    content: "";
+    border-left: 2px solid black;
+    border-top: 2px solid black;
+    padding: 5px;
+    right: 10px;
+    top: 20%;
+    -moz-transform: rotate(-135deg);
+    -ms-transform: rotate(-135deg);
+    -o-transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+}
+
+/* The alert message box */
+.alert {
+    padding: 20px;
+    background-color: #f44336; /* Red */
+    color: white;
+    margin: 15px;
+    display: none;
+}
+
+/* The close button */
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+    color: black;
+}
+
+select {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 5px 5px 5px;
+    border: 1px solid #ccc;
+}
+
+
