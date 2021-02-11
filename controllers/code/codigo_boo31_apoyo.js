@@ -140,3 +140,10 @@ for (const a of elem.querySelectorAll('div[role="list"]>dl')) {
          job.reqid = a.innerText.split(':').pop().trim();
     } 
   }
+
+  // Experience with inlcudes
+  for (const a of full_html.querySelectorAll('li')) {
+    if (a.textContent.includes('experience') && a.textContent.search(/[0-9]/g)>-1){
+      job.experienced_required = a.textContent;
+    } 
+  }

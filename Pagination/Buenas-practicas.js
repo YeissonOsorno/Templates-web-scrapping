@@ -25,6 +25,7 @@ var person = {
  {
  	console.log(data,person[data])
  }
+
 /*************************************************/
  /*Validar objetos en JavaScript*/
  var persona = {};

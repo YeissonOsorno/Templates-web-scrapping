@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f340c724-36c5-4a6c-912c-5a0b2cafe670" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/Pagination/Buenas-practicas.js" beforeDir="false" afterPath="$PROJECT_DIR$/Pagination/Buenas-practicas.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Templates-Base/ICIMS-Junio.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Templates-Base/ICIMS.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Templates-Base/iCIMS-with-salary.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Templates-Base/icims htmlPost.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Templates-Base/jobviteMultilocation.js" beforeDir="false" afterPath="$PROJECT_DIR$/Templates-Base/jobviteMultilocation.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/ATS/iCIMS-octubre2020.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/ATS/icimsMultilocation.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/ATS/myWorkDay.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/ATS/myWorkDay.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/code/codigo_boo31_apoyo.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/code/codigo_boo31_apoyo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/steps/jobDescription/jobdata_proof_3_js_plano.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/steps/jobDescription/jobdata_proof_3_js_plano.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates-base-2-2020/icimsMultilocation.js" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1lkM4XYpHoPE2XisHpqmRowMJLu" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../repositories/scrapy-io" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f340c724-36c5-4a6c-912c-5a0b2cafe670" name="Default Changelist" comment="" />
+      <created>1608136445030</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1608136445030</updated>
+      <workItem from="1608136446224" duration="140000" />
+      <workItem from="1608248301834" duration="42000" />
+      <workItem from="1609034780901" duration="15000" />
+      <workItem from="1609034817758" duration="468000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
